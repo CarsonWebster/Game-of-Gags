@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=15 format=3 uid="uid://dvb3olf4lg2tn"]
-
 
 [ext_resource type="Script" path="res://Scripts/victim.gd" id="1_gpr15"]
 [ext_resource type="Texture2D" uid="uid://cyk0dvokhqhg6" path="res://Assets/skyler/sklyer-stand.png" id="2_npnw7"]

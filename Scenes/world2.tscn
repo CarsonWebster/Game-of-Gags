@@ -1,22 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://crir22q4u68vv"]
+[gd_scene load_steps=20 format=3 uid="uid://dbsie3pcjayw7"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
-[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="1_xncld"]
-[ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="2_mgf81"]
-[ext_resource type="Script" path="res://Scripts/VictimSpawner.gd" id="5_jkvxr"]
-[ext_resource type="PackedScene" uid="uid://dvb3olf4lg2tn" path="res://Scenes/victim.tscn" id="6_3uc5o"]
-[ext_resource type="Script" path="res://Scripts/MovingCamera.gd" id="7_al342"]
-[ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="7_m01t3"]
-[ext_resource type="Script" path="res://Scripts/ConstantFollow.gd" id="7_xyc5e"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
-[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="9_h3ay0"]
-[ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_r40jk"]
-[ext_resource type="PackedScene" path="res://Scenes/player_stat_handler.tscn" id="11_7wet5"]
-[ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="11_tre3e"]
-[ext_resource type="PackedScene" path="res://Scenes/base_collectable.tscn" id="12_gwpac"]
-[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="13_5kq1h"]
-[ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="14_ibhk1"]
-[ext_resource type="PackedScene" uid="uid://ds3l4cta60sk3" path="res://Scenes/npcs.tscn" id="17_iq22f"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_4ljl2"]
+[ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="2_b7p6g"]
+[ext_resource type="Script" path="res://Scripts/MovingCamera.gd" id="5_dmxda"]
+[ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="6_20yt6"]
+[ext_resource type="Script" path="res://Scripts/ConstantFollow.gd" id="7_ru5uv"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="8_eqtw5"]
+[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="9_djmc6"]
+[ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_cus3j"]
+[ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="11_u6yix"]
+[ext_resource type="PackedScene" path="res://Scenes/player_stat_handler.tscn" id="12_mnqhk"]
+[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="13_2gjuy"]
+[ext_resource type="PackedScene" path="res://Scenes/base_collectable.tscn" id="14_ihhcx"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="15_e06sj"]
+[ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="16_q1o2t"]
+[ext_resource type="PackedScene" uid="uid://ds3l4cta60sk3" path="res://Scenes/npcs.tscn" id="17_1vsmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
 size = Vector2(151, 111)
@@ -40,49 +38,25 @@ _data = {
 point_count = 4
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_qxqoa")
+script = ExtResource("1_4ljl2")
 metadata/_edit_lock_ = true
 
 [node name="Enviroment" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Enviroment"]
 position = Vector2(321, 240)
-texture = ExtResource("2_mgf81")
+texture = ExtResource("2_b7p6g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(321, 240)
 
-[node name="Victims" type="Node2D" parent="."]
-visible = false
-
-[node name="VictimSpawner" type="Node" parent="." node_paths=PackedStringArray("victims")]
-script = ExtResource("5_jkvxr")
-victim_scene = ExtResource("6_3uc5o")
-victims = NodePath("../Victims")
-
-[node name="SpawnPoints" type="Node2D" parent="VictimSpawner"]
-
-[node name="SpawnPoint" type="Marker2D" parent="VictimSpawner/SpawnPoints"]
-position = Vector2(-39, 164)
-
-[node name="SpawnPoint2" type="Marker2D" parent="VictimSpawner/SpawnPoints"]
-position = Vector2(-42, 293)
-
-[node name="SpawnPoint3" type="Marker2D" parent="VictimSpawner/SpawnPoints"]
-position = Vector2(693, 181)
-
-[node name="SpawnPoint4" type="Marker2D" parent="VictimSpawner/SpawnPoints"]
-position = Vector2(691, 298)
-
-[node name="Timer" type="Timer" parent="VictimSpawner"]
-
 [node name="MovingCamera" type="Area2D" parent="." node_paths=PackedStringArray("cam_paths")]
 position = Vector2(81, 60)
-script = ExtResource("7_al342")
+script = ExtResource("5_dmxda")
 cam_paths = [NodePath("CamPaths/CamPath1/PathFollow2D"), NodePath("CamPaths/CamPath2/PathFollow2D"), NodePath("CamPaths/CamPath3/PathFollow2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingCamera"]
-texture = ExtResource("7_m01t3")
+texture = ExtResource("6_20yt6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingCamera"]
 position = Vector2(-0.5, 0.5)
@@ -99,16 +73,16 @@ autostart = true
 [node name="Corrners" type="Node2D" parent="MovingCamera"]
 
 [node name="Marker2D" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(70, 142)
+position = Vector2(52, 126)
 
 [node name="Marker2D2" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(546, 135)
+position = Vector2(348, 58)
 
 [node name="Marker2D3" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(550, 410)
+position = Vector2(404, 335)
 
 [node name="Marker2D4" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(74, 413)
+position = Vector2(23, 328)
 
 [node name="CamPaths" type="Node2D" parent="MovingCamera"]
 
@@ -119,7 +93,8 @@ curve = SubResource("Curve2D_36x2l")
 [node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath1"]
 position = Vector2(-13, 188)
 rotates = false
-script = ExtResource("7_xyc5e")
+script = ExtResource("7_ru5uv")
+speed = 50.0
 
 [node name="CamPath2" type="Path2D" parent="MovingCamera/CamPaths"]
 curve = SubResource("Curve2D_lmjam")
@@ -127,7 +102,8 @@ curve = SubResource("Curve2D_lmjam")
 [node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath2"]
 position = Vector2(-9, 20)
 rotates = false
-script = ExtResource("7_xyc5e")
+script = ExtResource("7_ru5uv")
+speed = 50.0
 
 [node name="CamPath3" type="Path2D" parent="MovingCamera/CamPaths"]
 curve = SubResource("Curve2D_wgho6")
@@ -135,11 +111,12 @@ curve = SubResource("Curve2D_wgho6")
 [node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath3"]
 position = Vector2(99, 308)
 rotates = false
-script = ExtResource("7_xyc5e")
+script = ExtResource("7_ru5uv")
+speed = 50.0
 
 [node name="ui_container" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="ui_container" instance=ExtResource("8_t6m8a")]
+[node name="PauseMenu" parent="ui_container" instance=ExtResource("8_eqtw5")]
 visible = false
 offset_left = 208.0
 offset_top = 140.0
@@ -147,42 +124,46 @@ offset_right = 208.0
 offset_bottom = 140.0
 scale = Vector2(3.20148, 3.20148)
 
-[node name="HUD" parent="ui_container" instance=ExtResource("9_h3ay0")]
+[node name="HUD" parent="ui_container" instance=ExtResource("9_djmc6")]
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 120.0
 autostart = true
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_r40jk")
+stream = ExtResource("10_cus3j")
 
 [node name="ManagerContainer" type="Node" parent="."]
 
 [node name="CollectableManager" type="Node" parent="ManagerContainer"]
-script = ExtResource("11_tre3e")
+script = ExtResource("11_u6yix")
 
-[node name="PlayerStatHandler" parent="ManagerContainer" instance=ExtResource("11_7wet5")]
+[node name="PlayerStatHandler" parent="ManagerContainer" instance=ExtResource("12_mnqhk")]
 
 [node name="EntityContainer" type="Node2D" parent="."]
 
-[node name="Player" parent="EntityContainer" instance=ExtResource("1_xncld")]
+[node name="Player" parent="EntityContainer" instance=ExtResource("13_2gjuy")]
 position = Vector2(58, 407)
 
-[node name="BaseCollectable" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+[node name="BaseCollectable" parent="EntityContainer" instance=ExtResource("14_ihhcx")]
 position = Vector2(80, 262)
-collectable_resource = ExtResource("13_5kq1h")
+collectable_resource = ExtResource("15_e06sj")
 
-[node name="BaseCollectable2" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+[node name="BaseCollectable2" parent="EntityContainer" instance=ExtResource("14_ihhcx")]
 position = Vector2(395, 107)
-collectable_resource = ExtResource("14_ibhk1")
+collectable_resource = ExtResource("16_q1o2t")
 
-[node name="BaseCollectable3" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+[node name="BaseCollectable3" parent="EntityContainer" instance=ExtResource("14_ihhcx")]
 position = Vector2(553, 273)
-collectable_resource = ExtResource("13_5kq1h")
+collectable_resource = ExtResource("15_e06sj")
 
-[node name="Npcs" parent="." instance=ExtResource("17_iq22f")]
+[node name="Npcs" parent="." instance=ExtResource("17_1vsmg")]
 
-[connection signal="timeout" from="VictimSpawner/Timer" to="VictimSpawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="MovingCamera/OffsetTimer" to="MovingCamera" method="_on_offset_timer_timeout"]
 [connection signal="timeout" from="MovingCamera/StateTimer" to="MovingCamera" method="_on_state_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+
+[editable path="Npcs"]
+[editable path="Npcs/Paths/Path1"]
+[editable path="Npcs/Paths/Path2"]
+[editable path="Npcs/Paths/Path3"]

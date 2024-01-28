@@ -2,6 +2,7 @@ class_name NpcPath
 extends PathFollow2D
 
 signal finished_walk(this)
+var walker: Npc
 
 @export var pixel_speed = 40.0
 var in_use = false
@@ -10,6 +11,7 @@ var in_use = false
 func _ready():
 	loop = false
 	rotates = false
+	walker = get_child(0)
 
 #if the path is in use, we walk along the path. If we finish our walk, throw a signal
 func _physics_process(delta):
@@ -20,7 +22,11 @@ func _physics_process(delta):
 		finished_walk.emit($".")
 
 func set_in_use(b: bool):
+	print(name, " set in use: ", b)
 	in_use = b
+	if progress == 0.0:
+		walker.add_to_group("active_npcs")
 	
 func reset():
-	progress = 0
+	progress = 0.0
+	walker.remove_from_group("active_npcs")

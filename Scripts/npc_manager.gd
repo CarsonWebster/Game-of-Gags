@@ -16,10 +16,12 @@ func _ready():
 			paths_list.append(child.get_child(0))
 	for p in paths_list:
 		path_usage[p] = false
+	print(paths_list)
 	initial_x_npcs(MAX_NPCS)
 	
 func initial_x_npcs(x: int):
 	for idx in x:
+		print("activating!")
 		activate_path(random_unused_path())
 
 #returns a random path that's not currently being used
@@ -32,11 +34,11 @@ func random_unused_path() -> NpcPath:
 
 func activate_path(npc_path):
 	path_usage[npc_path] = true
-	npc_path.in_use = true
+	npc_path.set_in_use(true)
 
 func _on_path_follow_2d_finished_walk(path_follow: NpcPath):
 	path_usage[path_follow] = false
-	path_follow.in_use = false
+	path_follow.set_in_use(false)
 	path_follow.reset()
 	var new_path = random_unused_path()
 	activate_path(new_path)
