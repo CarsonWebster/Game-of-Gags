@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var SPRINT_MULTIPLIER = 3.0
 
 @export var pie_projectile: PackedScene
+@export var banana_trap: PackedScene
 
 var screen_size
 
@@ -29,28 +30,28 @@ var current_state: PlayerState
 func set_state(new_state: PlayerState):
 	if current_state != new_state:
 		current_state = new_state
-		#print(current_state)
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	current_state = PlayerState.IDLE
 	
 func _process(_delta):
-	if Input.is_action_pressed("attack1"):
+	if Input.is_action_pressed("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA_WALK)
-	if Input.is_action_just_released("attack1"):
+	if Input.is_action_just_released("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA)
-	if Input.is_action_pressed("attack2"):
+		drop_banana()
+	if Input.is_action_pressed("attack2") and player_stats.current_pies > 0:
 		set_state(PlayerState.PIE_WALK)
-	if Input.is_action_just_released("attack2"):
+	if Input.is_action_just_released("attack2") and player_stats.current_pies > 0:
 		set_state(PlayerState.PIE)
-	if Input.is_action_pressed("attack3"):
+	if Input.is_action_pressed("attack3") and player_stats.current_shocks > 0:
 		set_state(PlayerState.SHOCK)
 
 
 func _physics_process(_delta):
 	# Get input if we are in IDLE or WALK state
-	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK or current_state == PlayerState.BANANA_WALK or current_state == PlayerState.PIE_WALK:
+	if current_state in MoveableStates:
 		var horizontal_direction = Input.get_axis("walk_left", "walk_right")
 		if horizontal_direction:
 			velocity.x = horizontal_direction * HORIZONTAL_SPEED
@@ -110,9 +111,26 @@ func _on_animated_sprite_2d_animation_finished():
 	match animated_sprite.animation:
 		"Pie Throw":
 			set_state(PlayerState.IDLE)
-			var pie = pie_projectile.instantiate()
-			owner.add_child(pie)
-			pie.position = $PieSpawnPoint.global_position
-			pie.throw(animated_sprite.flip_h)
+			throw_pie()
+		"Banana Drop":
+			set_state(PlayerState.IDLE)
+			drop_banana()
 		_:
 			set_state(PlayerState.IDLE)
+
+func throw_pie():
+	if player_stats.current_pies > 0:
+		player_stats.on_pie_dropped()
+		var pie = pie_projectile.instantiate()
+		owner.add_child(pie)
+		pie.position = $PieSpawnPoint.global_position
+		pie.throw(animated_sprite.flip_h)
+
+func drop_banana():
+	if player_stats.current_bananas > 0:
+		#print("banana")
+		player_stats.on_banana_dropped()
+		var banana = banana_trap.instantiate()
+		owner.add_child(banana)
+		banana.position = $BananaSpawnPoint.global_position
+		
