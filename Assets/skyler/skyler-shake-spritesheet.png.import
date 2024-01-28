@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyk0dvokhqhg6"
-path="res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"
+uid="uid://cetga50isq1sy"
+path="res://.godot/imported/skyler-shake-spritesheet.png-7ec0a7cfb6e2289fdb77d7ea8b22ae18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/skyler/skyler-stand.png"
-dest_files=["res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"]
+source_file="res://Assets/skyler/skyler-shake-spritesheet.png"
+dest_files=["res://.godot/imported/skyler-shake-spritesheet.png-7ec0a7cfb6e2289fdb77d7ea8b22ae18.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyk0dvokhqhg6"
-path="res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"
+uid="uid://ctydg3wqr2q4o"
+path="res://.godot/imported/oliver-shocked-spritesheet.png-fa2b8aa1195f077fd6edcff9b6b90422.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/skyler/skyler-stand.png"
-dest_files=["res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"]
+source_file="res://Assets/oliver/oliver-shocked-spritesheet.png"
+dest_files=["res://.godot/imported/oliver-shocked-spritesheet.png-fa2b8aa1195f077fd6edcff9b6b90422.ctex"]
 
 [params]
 

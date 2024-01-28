@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyk0dvokhqhg6"
-path="res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"
+uid="uid://00cj12sfst3b"
+path="res://.godot/imported/oliver-banana-slip-spritesheet.png-2ec6fb071a42fb56c3082de5a260f3ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/skyler/skyler-stand.png"
-dest_files=["res://.godot/imported/skyler-stand.png-188cea44e46439f01433ec8446296169.ctex"]
+source_file="res://Assets/oliver/oliver-banana-slip-spritesheet.png"
+dest_files=["res://.godot/imported/oliver-banana-slip-spritesheet.png-2ec6fb071a42fb56c3082de5a260f3ec.ctex"]
 
 [params]
 
