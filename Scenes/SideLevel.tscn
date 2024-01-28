@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://c10qrgaav0xcb"]
+
+[ext_resource type="PackedScene" uid="uid://b3nnj8awfmuej" path="res://Scenes/Player.tscn" id="2_tr5jj"]
+[ext_resource type="Texture2D" uid="uid://cpa82ussrbtty" path="res://icon.svg" id="2_x1wrw"]
+[ext_resource type="PackedScene" uid="uid://bhx54txl42ndl" path="res://Scenes/Ladder.tscn" id="3_nm66v"]
+[ext_resource type="PackedScene" uid="uid://c6nc44emqr76o" path="res://Scenes/npc_spawner.tscn" id="5_gj8en"]
+[ext_resource type="PackedScene" uid="uid://114o8jlaio1j" path="res://Scenes/npc_despawner.tscn" id="5_xhrji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxbsc"]
+size = Vector2(1216, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss5h8"]
+size = Vector2(794, 62)
+
+[node name="SideLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(585, 366)
+zoom = Vector2(1.035, 1.035)
+
+[node name="Player" parent="." instance=ExtResource("2_tr5jj")]
+position = Vector2(482, 493)
+scale = Vector2(0.55, 0.55)
+
+[node name="Layout" type="Node2D" parent="."]
+
+[node name="Platforms" type="Node2D" parent="Layout"]
+
+[node name="platform1" type="RigidBody2D" parent="Layout/Platforms"]
+position = Vector2(578, 629)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Layout/Platforms/platform1"]
+position = Vector2(3.05176e-05, 1.99998)
+scale = Vector2(9.48438, 0.484375)
+texture = ExtResource("2_x1wrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layout/Platforms/platform1"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_yxbsc")
+
+[node name="platform2" type="RigidBody2D" parent="Layout/Platforms"]
+position = Vector2(575, 409)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Layout/Platforms/platform2"]
+position = Vector2(14.5, 1.99998)
+scale = Vector2(6.22656, 0.484375)
+texture = ExtResource("2_x1wrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layout/Platforms/platform2"]
+position = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_ss5h8")
+
+[node name="platform3" type="RigidBody2D" parent="Layout/Platforms"]
+position = Vector2(572, 204)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Layout/Platforms/platform3"]
+position = Vector2(14.5, 1.99998)
+scale = Vector2(6.22656, 0.484375)
+texture = ExtResource("2_x1wrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layout/Platforms/platform3"]
+position = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_ss5h8")
+
+[node name="Ladders" type="Node2D" parent="Layout"]
+
+[node name="Ladder" parent="Layout/Ladders" instance=ExtResource("3_nm66v")]
+position = Vector2(176, 388)
+scale = Vector2(0.23999, 3.36)
+
+[node name="Ladder2" parent="Layout/Ladders" instance=ExtResource("3_nm66v")]
+position = Vector2(1002, 393)
+scale = Vector2(0.23999, 3.36)
+
+[node name="npcs" type="Node2D" parent="."]
+
+[node name="spawners" type="Node2D" parent="npcs"]
+
+[node name="top_left_spawner" parent="npcs/spawners" node_paths=PackedStringArray("npc_list") instance=ExtResource("5_gj8en")]
+position = Vector2(-8, 131)
+npc_list = NodePath("../../npc_list")
+direction = Vector2(1, 0)
+
+[node name="top_right_spawner" parent="npcs/spawners" node_paths=PackedStringArray("npc_list") instance=ExtResource("5_gj8en")]
+position = Vector2(1165, 143)
+npc_list = NodePath("../../npc_list")
+direction = Vector2(-1, 0)
+
+[node name="bottom_left_spawner" parent="npcs/spawners" node_paths=PackedStringArray("npc_list") instance=ExtResource("5_gj8en")]
+position = Vector2(-11, 563)
+npc_list = NodePath("../../npc_list")
+direction = Vector2(1, 0)
+
+[node name="bottom_right_spawner" parent="npcs/spawners" node_paths=PackedStringArray("npc_list") instance=ExtResource("5_gj8en")]
+position = Vector2(1166, 548)
+npc_list = NodePath("../../npc_list")
+direction = Vector2(-1, 0)
+
+[node name="npc_list" type="Node2D" parent="npcs"]
+
+[node name="NpcDespawner2" parent="." instance=ExtResource("5_xhrji")]
+position = Vector2(1240, 371)
+scale = Vector2(1, 3.48001)
+
+[node name="NpcDespawner" parent="." instance=ExtResource("5_xhrji")]
+position = Vector2(-68, 319)
+scale = Vector2(1, 2.8)
