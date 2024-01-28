@@ -22,6 +22,7 @@ func _physics_process(delta):
 		finished_walk.emit($".")
 
 func set_in_use(b: bool):
+	print(name, " set in use: ", b)
 	in_use = b
 	if progress == 0.0:
 		walker.add_to_group("active_npcs")

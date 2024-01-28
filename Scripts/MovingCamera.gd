@@ -3,8 +3,9 @@ extends Area2D
 @onready var corrners = $Corrners
 @onready var offset_timer = $OffsetTimer
 @export var cam_paths: Array[PathFollow2D]
-const move_to_speed = 100.0
-const hover_speed = 50.0
+const move_to_speed = 80.0
+const hover_speed = 10.0
+const max_offset: float = 10.0
 
 enum State {
 	GO_TO_POSITION,
@@ -34,7 +35,7 @@ func _process(delta):
 		position = position.move_toward(target.position + offset, delta * hover_speed)
 
 func randomize_offset():
-	offset = Vector2(rng.randf_range(-1.0, 1.0), rng.randf_range(-1.0, 1.0))
+	offset = Vector2(rng.randf_range(-max_offset, max_offset), rng.randf_range(-max_offset, max_offset))
 
 func choose_next_state():
 	if current_state == State.GO_TO_NPC:
@@ -46,10 +47,11 @@ func choose_next_state():
 	else:
 		current_state = [State.GO_TO_POSITION, State.GO_TO_PATH, State.GO_TO_NPC].pick_random()
 		choose_new_target()
+	print("new state: ", current_state)
 
 func choose_new_target():
 	if current_state == State.GO_TO_NPC:
-		target = get_tree().get_nodes_in_group("active_npcs").pick_random()
+		target = get_tree().get_nodes_in_group("active_npcs").pick_random().get_parent()
 	elif current_state == State.GO_TO_PATH:
 		target = cam_paths.pick_random()
 	elif current_state == State.GO_TO_POSITION:
