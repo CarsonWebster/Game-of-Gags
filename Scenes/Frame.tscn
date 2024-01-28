@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0erabhcslykw"]
+
+[ext_resource type="Script" path="res://Scripts/Frame.gd" id="1_jkcms"]
+[ext_resource type="Texture2D" uid="uid://b12ofoyjqhqv2" path="res://Images/frame.png" id="2_lt5r6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8dla"]
+size = Vector2(160, 120)
+
+[node name="Frame" type="Area2D"]
+scale = Vector2(2.2, 2.2)
+script = ExtResource("1_jkcms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u8dla")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lt5r6")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

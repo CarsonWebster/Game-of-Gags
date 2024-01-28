@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c10qrgaav0xcb"]
+[gd_scene load_steps=9 format=3 uid="uid://c10qrgaav0xcb"]
 
 [ext_resource type="PackedScene" uid="uid://b3nnj8awfmuej" path="res://Scenes/Player.tscn" id="2_tr5jj"]
 [ext_resource type="Texture2D" uid="uid://cpa82ussrbtty" path="res://icon.svg" id="2_x1wrw"]
 [ext_resource type="PackedScene" uid="uid://bhx54txl42ndl" path="res://Scenes/Ladder.tscn" id="3_nm66v"]
 [ext_resource type="PackedScene" uid="uid://c6nc44emqr76o" path="res://Scenes/npc_spawner.tscn" id="5_gj8en"]
 [ext_resource type="PackedScene" uid="uid://114o8jlaio1j" path="res://Scenes/npc_despawner.tscn" id="5_xhrji"]
+[ext_resource type="PackedScene" uid="uid://c0erabhcslykw" path="res://Scenes/Frame.tscn" id="6_rwmli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxbsc"]
 size = Vector2(1216, 62)
@@ -101,10 +102,30 @@ direction = Vector2(-1, 0)
 
 [node name="npc_list" type="Node2D" parent="npcs"]
 
-[node name="NpcDespawner2" parent="." instance=ExtResource("5_xhrji")]
+[node name="despawners" type="Node2D" parent="npcs"]
+
+[node name="NpcDespawner" parent="npcs/despawners" instance=ExtResource("5_xhrji")]
+position = Vector2(-68, 319)
+scale = Vector2(1, 2.8)
+
+[node name="NpcDespawner2" parent="npcs/despawners" instance=ExtResource("5_xhrji")]
 position = Vector2(1240, 371)
 scale = Vector2(1, 3.48001)
 
-[node name="NpcDespawner" parent="." instance=ExtResource("5_xhrji")]
-position = Vector2(-68, 319)
-scale = Vector2(1, 2.8)
+[node name="Frame" parent="." node_paths=PackedStringArray("vertices") instance=ExtResource("6_rwmli")]
+position = Vector2(283, 125)
+vertices = [NodePath("../vertices/Marker2D"), NodePath("../vertices/Marker2D2"), NodePath("../vertices/Marker2D3"), NodePath("../vertices/Marker2D4")]
+
+[node name="vertices" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="vertices"]
+position = Vector2(109, 145)
+
+[node name="Marker2D2" type="Marker2D" parent="vertices"]
+position = Vector2(1042, 140)
+
+[node name="Marker2D3" type="Marker2D" parent="vertices"]
+position = Vector2(109, 515)
+
+[node name="Marker2D4" type="Marker2D" parent="vertices"]
+position = Vector2(1061, 561)
