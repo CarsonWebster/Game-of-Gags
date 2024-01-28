@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseCollectableResource" load_steps=3 format=3 uid="uid://d1tmido2akgd6"]
+
+[ext_resource type="Script" path="res://Scenes/Resources/BaseCollectableResource.gd" id="1_4stnn"]
+[ext_resource type="Texture2D" uid="uid://bgeyk0pp2ox1m" path="res://Assets/objects/banana-peel.png" id="2_0rxc1"]
+
+[resource]
+script = ExtResource("1_4stnn")
+tag = "Banana"
+value = 1
+texture = ExtResource("2_0rxc1")

@@ -1,13 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw3on0ctfje7u"]
+
+[gd_scene load_steps=17 format=3 uid="uid://crir22q4u68vv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
-[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="1_xncld"]
-[ext_resource type="Texture2D" uid="uid://kca2x1hh2ne6" path="res://Assets/Enviroment/road-sidewalk-test.png" id="2_8regs"]
-[ext_resource type="Texture2D" uid="uid://bbc466b3pl0md" path="res://Assets/Enviroment/horrible-building.png" id="3_lwsj5"]
+[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/player.tscn" id="1_xncld"]
+[ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="2_mgf81"]
+
 [ext_resource type="Script" path="res://Scripts/VictimSpawner.gd" id="5_jkvxr"]
 [ext_resource type="PackedScene" uid="uid://5y7mmkg8aohp" path="res://Scenes/victim.tscn" id="6_3uc5o"]
 [ext_resource type="Script" path="res://Scenes/MovingCamera.gd" id="7_al342"]
 [ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="7_m01t3"]
+[ext_resource type="PackedScene" uid="uid://b1mmlpyqvrekr" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
+[ext_resource type="PackedScene" uid="uid://47n6gpt83kqu" path="res://Scenes/hud.tscn" id="9_h3ay0"]
+[ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_r40jk"]
+[ext_resource type="PackedScene" uid="uid://cyc4hedeuv0r4" path="res://Scenes/player_stat_handler.tscn" id="11_7wet5"]
+[ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="11_tre3e"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="12_gwpac"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="13_5kq1h"]
+[ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="14_ibhk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
 size = Vector2(151, 111)
@@ -17,63 +26,13 @@ script = ExtResource("1_qxqoa")
 metadata/_edit_lock_ = true
 
 [node name="Enviroment" type="Node2D" parent="."]
-position = Vector2(0, 1)
 
-[node name="Road" type="Sprite2D" parent="Enviroment"]
-position = Vector2(330.301, 124.735)
-scale = Vector2(24.7688, 3.92923)
-texture = ExtResource("2_8regs")
-
-[node name="Road2" type="Sprite2D" parent="Enviroment"]
-position = Vector2(329, 380)
-scale = Vector2(24.7688, -4.07077)
-texture = ExtResource("2_8regs")
-
-[node name="Horrible-building" type="Sprite2D" parent="Enviroment"]
-position = Vector2(42, 46)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building2" type="Sprite2D" parent="Enviroment"]
-position = Vector2(118, 25)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building3" type="Sprite2D" parent="Enviroment"]
-position = Vector2(206, 40)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building4" type="Sprite2D" parent="Enviroment"]
-position = Vector2(263, 57)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building5" type="Sprite2D" parent="Enviroment"]
-position = Vector2(318, 16)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building6" type="Sprite2D" parent="Enviroment"]
-position = Vector2(374, 37)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building7" type="Sprite2D" parent="Enviroment"]
-position = Vector2(438, 57)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building8" type="Sprite2D" parent="Enviroment"]
-position = Vector2(503, 37)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building9" type="Sprite2D" parent="Enviroment"]
-position = Vector2(559, 57)
-texture = ExtResource("3_lwsj5")
-
-[node name="Horrible-building10" type="Sprite2D" parent="Enviroment"]
-position = Vector2(620, 61)
-texture = ExtResource("3_lwsj5")
+[node name="Sprite2D" type="Sprite2D" parent="Enviroment"]
+position = Vector2(321, 240)
+texture = ExtResource("2_mgf81")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(321, 240)
-
-[node name="Player" parent="." instance=ExtResource("1_xncld")]
-position = Vector2(58, 407)
 
 [node name="Victims" type="Node2D" parent="."]
 
@@ -123,4 +82,48 @@ position = Vector2(550, 410)
 [node name="Marker2D4" type="Marker2D" parent="MovingCamera/Corrners"]
 position = Vector2(74, 413)
 
+[node name="ui_container" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="ui_container" instance=ExtResource("8_t6m8a")]
+visible = false
+offset_left = 208.0
+offset_top = 140.0
+offset_right = 208.0
+offset_bottom = 140.0
+scale = Vector2(3.20148, 3.20148)
+
+[node name="HUD" parent="ui_container" instance=ExtResource("9_h3ay0")]
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_r40jk")
+
+[node name="ManagerContainer" type="Node" parent="."]
+
+[node name="CollectableManager" type="Node" parent="ManagerContainer"]
+script = ExtResource("11_tre3e")
+
+[node name="PlayerStatHandler" parent="ManagerContainer" instance=ExtResource("11_7wet5")]
+
+[node name="EntityContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="EntityContainer" instance=ExtResource("1_xncld")]
+position = Vector2(58, 407)
+
+[node name="BaseCollectable" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(80, 262)
+collectable_resource = ExtResource("13_5kq1h")
+
+[node name="BaseCollectable2" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(395, 107)
+collectable_resource = ExtResource("14_ibhk1")
+
+[node name="BaseCollectable3" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(553, 273)
+collectable_resource = ExtResource("13_5kq1h")
+
 [connection signal="timeout" from="VictimSpawner/Timer" to="VictimSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

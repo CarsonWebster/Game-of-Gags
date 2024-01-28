@@ -1,39 +1,39 @@
-[gd_scene load_steps=13 format=3 uid="uid://yx8ru4t7xdym"]
+[gd_scene load_steps=14 format=3 uid="uid://yx8ru4t7xdym"]
 
-[ext_resource type="Texture2D" uid="uid://bni4lyuc1mk0u" path="res://Assets/Player/stand.png" id="1_3nbmh"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
-[ext_resource type="Texture2D" uid="uid://cmqd0i1lne3cy" path="res://Assets/Player/pie-throw.png" id="3_6ow8w"]
-[ext_resource type="Texture2D" uid="uid://w3e8y4542qww" path="res://Assets/Player/Walk 128x64.png" id="4_2tx5y"]
+[ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
+[ext_resource type="Texture2D" uid="uid://b2kowttrnwbbv" path="res://Assets/player/player-pie-throw-spritesheet.png" id="3_vpq03"]
+[ext_resource type="Texture2D" uid="uid://dsuuvuciiakhc" path="res://Assets/player/player-banana-walk-spritesheet.png" id="4_fnmqy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oe0uy"]
-atlas = ExtResource("1_3nbmh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dos7"]
+atlas = ExtResource("2_7acw1")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_egdv3"]
-atlas = ExtResource("3_6ow8w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rho5h"]
+atlas = ExtResource("3_vpq03")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ub1pa"]
-atlas = ExtResource("3_6ow8w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d0sw"]
+atlas = ExtResource("3_vpq03")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gijrl"]
-atlas = ExtResource("3_6ow8w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssuu3"]
+atlas = ExtResource("3_vpq03")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wge6a"]
-atlas = ExtResource("4_2tx5y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhenm"]
+atlas = ExtResource("4_fnmqy")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkprw"]
-atlas = ExtResource("4_2tx5y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrq34"]
+atlas = ExtResource("4_fnmqy")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uk7ks"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fubbr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oe0uy")
+"texture": SubResource("AtlasTexture_1dos7")
 }],
 "loop": false,
 "name": &"Idle",
@@ -41,13 +41,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_egdv3")
+"texture": SubResource("AtlasTexture_rho5h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ub1pa")
+"texture": SubResource("AtlasTexture_8d0sw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gijrl")
+"texture": SubResource("AtlasTexture_ssuu3")
 }],
 "loop": false,
 "name": &"Pie Throw",
@@ -55,10 +55,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wge6a")
+"texture": SubResource("AtlasTexture_nhenm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jkprw")
+"texture": SubResource("AtlasTexture_nrq34")
 }],
 "loop": false,
 "name": &"Walk",
@@ -69,17 +69,26 @@ animations = [{
 radius = 5.0
 height = 14.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_uvvhg"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_obtye")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_uk7ks")
-animation = &"Pie Throw"
+sprite_frames = SubResource("SpriteFrames_fubbr")
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_bkaov")
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_uvvhg")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
