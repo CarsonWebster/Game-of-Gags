@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var SPRINT_MULTIPLIER = 3.0
 
 @export var pie_projectile: PackedScene
+@export var banana_trap: PackedScene
 
 var screen_size
 
@@ -16,35 +17,42 @@ var screen_size
 enum PlayerState {
 	IDLE,
 	WALK,
+	PIE_WALK,
 	PIE,
 	BANANA_WALK,
 	BANANA,
 	SHOCK,
 }
+var MoveableStates: Array[PlayerState] = [PlayerState.IDLE, PlayerState.WALK, PlayerState.BANANA_WALK, PlayerState.PIE_WALK]
+var NonMoveableStates: Array[PlayerState] = [PlayerState.PIE, PlayerState.BANANA, PlayerState.SHOCK]
 
 var current_state: PlayerState
 func set_state(new_state: PlayerState):
 	if current_state != new_state:
 		current_state = new_state
+		#print(current_state)
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	current_state = PlayerState.IDLE
 	
 func _process(_delta):
-	if Input.is_action_pressed("attack1"):
+	if Input.is_action_pressed("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA_WALK)
-	if Input.is_action_just_released("attack1"):
+	if Input.is_action_just_released("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA)
-	if Input.is_action_just_pressed("attack2"):
+		drop_banana()
+	if Input.is_action_pressed("attack2") and player_stats.current_pies > 0:
+		set_state(PlayerState.PIE_WALK)
+	if Input.is_action_just_released("attack2") and player_stats.current_pies > 0:
 		set_state(PlayerState.PIE)
-	if Input.is_action_just_pressed("attack3"):
+	if Input.is_action_pressed("attack3") and player_stats.current_shocks > 0:
 		set_state(PlayerState.SHOCK)
 
 
 func _physics_process(_delta):
 	# Get input if we are in IDLE or WALK state
-	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK or current_state == PlayerState.BANANA_WALK:
+	if current_state in MoveableStates:
 		var horizontal_direction = Input.get_axis("walk_left", "walk_right")
 		if horizontal_direction:
 			velocity.x = horizontal_direction * HORIZONTAL_SPEED
@@ -62,11 +70,13 @@ func _physics_process(_delta):
 		velocity.y = move_toward(velocity.y, 0, VERTICAL_SPEED)
 
 	# Idle <-> Walk state check
-	if current_state != PlayerState.PIE or current_state != PlayerState.BANANA or current_state != PlayerState.SHOCK:
+	if current_state in MoveableStates:
 		if velocity.is_zero_approx():
+			#print("IDLING")
 			set_state(PlayerState.IDLE)
-		else:
+		elif current_state == PlayerState.IDLE:
 			set_state(PlayerState.WALK)
+
 	# Sprite flip check
 	if velocity.x < 0 && not velocity.is_zero_approx():
 		animated_sprite.flip_h = true
@@ -81,12 +91,14 @@ func _physics_process(_delta):
 			animated_sprite.play("Walk")
 		PlayerState.BANANA_WALK:
 			animated_sprite.play("Banana Walk")
+		PlayerState.PIE_WALK:
+			animated_sprite.play("Pie Walk")
 		PlayerState.PIE:
 			animated_sprite.play("Pie Throw")
 		PlayerState.BANANA:
 			animated_sprite.play("Banana Drop")
 		PlayerState.SHOCK:
-			animated_sprite.play("Handshake")
+			animated_sprite.play("Handshake Miss")
 
 	# Move and adjust postion
 	move_and_slide()
@@ -96,10 +108,13 @@ func _physics_process(_delta):
 # Ugly animation state machine right here
 func _on_animated_sprite_2d_animation_finished():
 	# Unlock other animations if action just finished
-	if animated_sprite.animation == "Pie Throw":
-		set_state(PlayerState.IDLE)
-		var pie = pie_projectile.instantiate()
-		owner.add_child(pie)
-		pie.position = $PieSpawnPoint.global_position
-		print("Throwing pie left: ", animated_sprite.flip_h)
-		pie.throw(animated_sprite.flip_h)
+	#print("Animation finsihed: ", animated_sprite.animation)
+	match animated_sprite.animation:
+		"Pie Throw":
+			set_state(PlayerState.IDLE)
+			var pie = pie_projectile.instantiate()
+			owner.add_child(pie)
+			pie.position = $PieSpawnPoint.global_position
+			pie.throw(animated_sprite.flip_h)
+		_:
+			set_state(PlayerState.IDLE)
