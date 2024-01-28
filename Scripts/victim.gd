@@ -14,12 +14,12 @@ var velocity: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Victim spawned at: ", get_global_position())
+	#print("Victim spawned at: ", get_global_position())
 	if position.x < 0:
 		current_heading = Heading.EAST
 	else:
 		current_heading = Heading.WEST
-	print("Current heading: ", current_heading)
+	#print("Current heading: ", current_heading)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

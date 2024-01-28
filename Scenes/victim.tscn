@@ -1,27 +1,81 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvb3olf4lg2tn"]
+[gd_scene load_steps=15 format=3 uid="uid://dvb3olf4lg2tn"]
 
-[ext_resource type="Texture2D" uid="uid://w3e8y4542qww" path="res://Assets/Player/Walk 128x64.png" id="1_3gu4m"]
 [ext_resource type="Script" path="res://Scripts/victim.gd" id="1_gpr15"]
+[ext_resource type="Texture2D" uid="uid://cyk0dvokhqhg6" path="res://Assets/skyler/sklyer-stand.png" id="2_npnw7"]
+[ext_resource type="Texture2D" uid="uid://bj8kg2tqfjknf" path="res://Assets/skyler/skyler-pie-face-spritesheet.png" id="3_oufsu"]
+[ext_resource type="Texture2D" uid="uid://b167i3pmb8udu" path="res://Assets/skyler/skyler-shocked-spritesheet.png" id="4_bimuv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1agtd"]
-atlas = ExtResource("1_3gu4m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sefte"]
+atlas = ExtResource("2_npnw7")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ng1of"]
-atlas = ExtResource("1_3gu4m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_03135"]
+atlas = ExtResource("3_oufsu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5al5o"]
+atlas = ExtResource("3_oufsu")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0ksnh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_73djn"]
+atlas = ExtResource("3_oufsu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgf4o"]
+atlas = ExtResource("3_oufsu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w88eq"]
+atlas = ExtResource("4_bimuv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuwax"]
+atlas = ExtResource("4_bimuv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d8ss"]
+atlas = ExtResource("4_bimuv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qtpm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1agtd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ng1of")
+"texture": SubResource("AtlasTexture_sefte")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03135")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5al5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73djn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgf4o")
+}],
+"loop": true,
+"name": &"Pie Face",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w88eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuwax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d8ss")
+}],
+"loop": true,
+"name": &"Shocked",
 "speed": 5.0
 }]
 
@@ -35,9 +89,8 @@ gravity_scale = 1.66533e-16
 script = ExtResource("1_gpr15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-sprite_frames = SubResource("SpriteFrames_0ksnh")
-animation = &"walk"
+sprite_frames = SubResource("SpriteFrames_6qtpm")
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

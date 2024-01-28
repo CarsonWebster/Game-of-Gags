@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseCollectableResource" load_steps=3 format=3 uid="uid://5wjdm2scraa5"]
+
+[ext_resource type="Script" path="res://Scenes/Resources/BaseCollectableResource.gd" id="1_3svxd"]
+[ext_resource type="Texture2D" uid="uid://027n22f44j37" path="res://Assets/objects/pie.png" id="2_j05nd"]
+
+[resource]
+script = ExtResource("1_3svxd")
+tag = "Pie"
+value = 1
+texture = ExtResource("2_j05nd")

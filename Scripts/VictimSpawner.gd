@@ -34,4 +34,4 @@ func spawn_victim():
 	var victim = victim_scene.instantiate()
 	victims.add_child(victim)
 	victim.position = selected_spawn_point.position
-	print("Spawned: ", victim, "at: ", victim.position)
+	#print("Spawned: ", victim, "at: ", victim.position)
