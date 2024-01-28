@@ -112,9 +112,25 @@ func _on_animated_sprite_2d_animation_finished():
 	match animated_sprite.animation:
 		"Pie Throw":
 			set_state(PlayerState.IDLE)
-			var pie = pie_projectile.instantiate()
-			owner.add_child(pie)
-			pie.position = $PieSpawnPoint.global_position
-			pie.throw(animated_sprite.flip_h)
+			throw_pie()
+		"Banana Drop":
+			set_state(PlayerState.IDLE)
+			drop_banana()
 		_:
 			set_state(PlayerState.IDLE)
+
+func throw_pie():
+	if player_stats.current_pies > 0:
+		player_stats.on_pie_dropped()
+		var pie = pie_projectile.instantiate()
+		owner.add_child(pie)
+		pie.position = $PieSpawnPoint.global_position
+		pie.throw(animated_sprite.flip_h)
+
+func drop_banana():
+	if player_stats.current_bananas > 0:
+		#print("banana")
+		player_stats.on_banana_dropped()
+		var banana = banana_trap.instantiate()
+		owner.add_child(banana)
+		banana.position = $BananaSpawnPoint.global_position
