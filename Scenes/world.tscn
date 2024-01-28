@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crir22q4u68vv"]
+[gd_scene load_steps=17 format=3 uid="uid://crir22q4u68vv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
 [ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/player.tscn" id="1_xncld"]
@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="7_m01t3"]
 [ext_resource type="PackedScene" uid="uid://b1mmlpyqvrekr" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
 [ext_resource type="PackedScene" uid="uid://47n6gpt83kqu" path="res://Scenes/hud.tscn" id="9_h3ay0"]
+[ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_r40jk"]
+[ext_resource type="PackedScene" uid="uid://cyc4hedeuv0r4" path="res://Scenes/player_stat_handler.tscn" id="11_7wet5"]
+[ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="11_tre3e"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="12_gwpac"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="13_5kq1h"]
+[ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="14_ibhk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
 size = Vector2(151, 111)
@@ -25,9 +31,6 @@ texture = ExtResource("2_mgf81")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(321, 240)
-
-[node name="Player" parent="." instance=ExtResource("1_xncld")]
-position = Vector2(58, 407)
 
 [node name="Victims" type="Node2D" parent="."]
 
@@ -92,6 +95,33 @@ scale = Vector2(3.20148, 3.20148)
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_r40jk")
+
+[node name="ManagerContainer" type="Node" parent="."]
+
+[node name="CollectableManager" type="Node" parent="ManagerContainer"]
+script = ExtResource("11_tre3e")
+
+[node name="PlayerStatHandler" parent="ManagerContainer" instance=ExtResource("11_7wet5")]
+
+[node name="EntityContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="EntityContainer" instance=ExtResource("1_xncld")]
+position = Vector2(58, 407)
+
+[node name="BaseCollectable" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(80, 262)
+collectable_resource = ExtResource("13_5kq1h")
+
+[node name="BaseCollectable2" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(395, 107)
+collectable_resource = ExtResource("14_ibhk1")
+
+[node name="BaseCollectable3" parent="EntityContainer" instance=ExtResource("12_gwpac")]
+position = Vector2(553, 273)
+collectable_resource = ExtResource("13_5kq1h")
 
 [connection signal="timeout" from="VictimSpawner/Timer" to="VictimSpawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

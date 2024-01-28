@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1mmlpyqvrekr"]
+[gd_scene load_steps=4 format=3 uid="uid://b1mmlpyqvrekr"]
 
+[ext_resource type="AudioStream" uid="uid://doaje3c8khbb7" path="res://Assets/Audio/Music/pause_theme.ogg" id="2_0rnxt"]
 [ext_resource type="Script" path="res://Scripts/ResumeButton.gd" id="3_0pj3p"]
 
 [sub_resource type="GDScript" id="GDScript_152ko"]
@@ -7,16 +8,18 @@ script/source = "extends Control
 
 # Get parent reference by going back twice to get main
 @onready var main = $\"../..\"
+@onready var pause_music = $PauseMusic
 
-func focus():
+func open_pause_menu():
 	$MarginContainer/VBoxContainer/ResumeButton.get_focus()
+	pause_music.play()
 
 func _on_resume_button_pressed():
-	main.pauseMenu(main.paused)
+	main.togglePause(main.paused)
+	pause_music.stop()
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-
 	get_tree().change_scene_to_file(\"res://Scenes/main_menu.tscn\")
 "
 
@@ -46,6 +49,9 @@ script = ExtResource("3_0pj3p")
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="PauseMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0rnxt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

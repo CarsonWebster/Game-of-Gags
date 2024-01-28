@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brppv14bqjswk"]
+
+[ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="1_rnlhv"]
+
+[node name="CollectableManager" type="Node"]
+script = ExtResource("1_rnlhv")
