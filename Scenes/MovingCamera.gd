@@ -8,11 +8,6 @@ func _ready():
 	print(corrners.get_children())
 	move_camera(corrners.get_children().pick_random().position)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func move_camera(pos: Vector2):
 	print("Moving camera to: ", pos)
 	var tween = get_tree().create_tween()

@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayButton.gd" id="3_fdrj6"]
 
 [node name="Main Menu" type="Node"]
+process_mode = 3
 script = ExtResource("1_4sllw")
 GameScene = ExtResource("2_58kck")
 
