@@ -20,11 +20,11 @@ func _process(delta):
 	else:
 		position.x += SPEED * delta
 	position.y += FALLING_SPEED * delta
-	print("Y pos: ", position.y, "difference: ", start_y - position.y)
+	#print("Y pos: ", position.y, "difference: ", start_y - position.y)
 	if (position.y - start_y ) > RANGE:
 		queue_free()
 
 func throw(moving_left: bool):
 	sprite.flip_v = moving_left
 	start_y = position.y
-	print("Starting y: ", start_y)
+	#print("Starting y: ", start_y)
