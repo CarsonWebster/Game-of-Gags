@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyt43jqr12nou"
+path="res://.godot/imported/Good sound.ogg-867df51577bca76e3b667d3bf3e904ad.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/UI sfx/Good sound.ogg"
+dest_files=["res://.godot/imported/Good sound.ogg-867df51577bca76e3b667d3bf3e904ad.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

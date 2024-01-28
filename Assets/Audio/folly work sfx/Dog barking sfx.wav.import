@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcmtj5bhx88vk"
+path="res://.godot/imported/Dog barking sfx.wav-e65c978559714b6b17c5926e0d9be826.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/folly work sfx/Dog barking sfx.wav"
+dest_files=["res://.godot/imported/Dog barking sfx.wav-e65c978559714b6b17c5926e0d9be826.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dijfpvux0uohy"
+path="res://.godot/imported/crowd laugh 1.ogg-5e8a496815dfa6a959c92aa96fd9082b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/audience sfx/crowd laugh 1.ogg"
+dest_files=["res://.godot/imported/crowd laugh 1.ogg-5e8a496815dfa6a959c92aa96fd9082b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

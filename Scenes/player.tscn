@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://yx8ru4t7xdym"]
+[gd_scene load_steps=52 format=3 uid="uid://yx8ru4t7xdym"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
@@ -10,8 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://ceclqxxttr2gt" path="res://Assets/player/player-stand-handshake.png" id="5_n72ix"]
 [ext_resource type="Texture2D" uid="uid://bqu65a8i36pxi" path="res://Assets/player/player-handshake-miss.png" id="5_pnvgl"]
 [ext_resource type="Texture2D" uid="uid://dp1a3gooh35a" path="res://Assets/player/player-victory-spritesheet.png" id="8_q2da5"]
-[ext_resource type="Texture2D" uid="uid://do7myhuyr2eje" path="res://Assets/player/player-pie-walk-spritesheet.png" id="9_mmtof"]
-[ext_resource type="Texture2D" uid="uid://c8jtop5yqsrsw" path="res://Assets/player/player-walk-spritesheet.png" id="10_2vgfl"]
+[ext_resource type="Texture2D" uid="uid://ftw8f1xd2egy" path="res://Assets/player/player-pie-walk-spritesheet.png" id="9_mmtof"]
+[ext_resource type="Texture2D" uid="uid://dwp8iosyffadq" path="res://Assets/player/player-walk-spritesheet.png" id="10_2vgfl"]
+[ext_resource type="AudioStream" uid="uid://cue6a2fqmldj3" path="res://Assets/Audio/electricity sfx/buzzer sfx.ogg" id="13_uspcq"]
+[ext_resource type="AudioStream" uid="uid://cenc6f4e182py" path="res://Assets/Audio/footstep sfx/Tip toe sfx.wav" id="14_c5adh"]
+[ext_resource type="AudioStream" uid="uid://kuvn6ew4681r" path="res://Assets/Audio/footstep sfx/flipflop step 1.ogg" id="15_lxcy7"]
+[ext_resource type="AudioStream" uid="uid://cfyfa0khpvtp1" path="res://Assets/Audio/folly work sfx/Splat 1 sfx.wav" id="16_pjw0b"]
+[ext_resource type="AudioStream" uid="uid://dnv8at0u5o7v" path="res://Assets/Audio/folly work sfx/throw sfx.ogg" id="17_73cdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x01mb"]
 atlas = ExtResource("3_vw2ce")
@@ -311,5 +316,25 @@ position = Vector2(10, 0)
 
 [node name="BananaSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 13)
+
+[node name="Zap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_uspcq")
+volume_db = 10.015
+
+[node name="BananaWalk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_c5adh")
+volume_db = 3.0
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_lxcy7")
+volume_db = 10.0
+
+[node name="BananaDrop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_pjw0b")
+volume_db = 20.0
+
+[node name="PieThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_73cdr")
+volume_db = 24.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

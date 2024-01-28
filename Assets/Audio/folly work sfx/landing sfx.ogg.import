@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnftwjsxdeowj"
+path="res://.godot/imported/landing sfx.ogg-1fc3734c1eb3d2db8a4be73f476080ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/folly work sfx/landing sfx.ogg"
+dest_files=["res://.godot/imported/landing sfx.ogg-1fc3734c1eb3d2db8a4be73f476080ef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
