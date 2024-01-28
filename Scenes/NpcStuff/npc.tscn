@@ -1,13 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6aeg2h5mgx7h"]
 
-[ext_resource type="Texture2D" uid="uid://w3e8y4542qww" path="res://Assets/Player/Walk 128x64.png" id="1_3oq3f"]
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_aoura"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1agtd"]
-atlas = ExtResource("1_3oq3f")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ng1of"]
-atlas = ExtResource("1_3oq3f")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iyuh5"]
@@ -28,6 +26,7 @@ animations = [{
 height = 22.0
 
 [node name="Npc" type="Area2D"]
+script = ExtResource("1_aoura")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)

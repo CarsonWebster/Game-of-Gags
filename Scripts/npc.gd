@@ -1,3 +1,4 @@
+class_name Npc
 extends Area2D
 
 const SPEED = 40.0
