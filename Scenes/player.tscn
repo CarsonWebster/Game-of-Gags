@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://yx8ru4t7xdym"]
+
+[ext_resource type="Texture2D" uid="uid://bni4lyuc1mk0u" path="res://Assets/Player/stand.png" id="1_3nbmh"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
+[ext_resource type="Texture2D" uid="uid://cmqd0i1lne3cy" path="res://Assets/Player/pie-throw.png" id="3_6ow8w"]
+[ext_resource type="Texture2D" uid="uid://w3e8y4542qww" path="res://Assets/Player/Walk 128x64.png" id="4_2tx5y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe0uy"]
+atlas = ExtResource("1_3nbmh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egdv3"]
+atlas = ExtResource("3_6ow8w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub1pa"]
+atlas = ExtResource("3_6ow8w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gijrl"]
+atlas = ExtResource("3_6ow8w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wge6a"]
+atlas = ExtResource("4_2tx5y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkprw"]
+atlas = ExtResource("4_2tx5y")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk7ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe0uy")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egdv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub1pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gijrl")
+}],
+"loop": false,
+"name": &"Pie Throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wge6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkprw")
+}],
+"loop": false,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bkaov"]
+radius = 5.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_obtye")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uk7ks")
+animation = &"Pie Throw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_bkaov")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
