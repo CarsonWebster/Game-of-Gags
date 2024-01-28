@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+@onready var EntityContainer = $".."
+
 @export var HORIZONTAL_SPEED = 100.0
 @export var VERTICAL_SPEED = 80.0
 @export var SPRINT_MULTIPLIER = 3.0
+
+@export var pie_projectile: PackedScene
 
 var screen_size
 
@@ -26,9 +30,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("attack2"):
 		set_state(PlayerState.PIE)
-	
-	#print("State: ", current_state)
-		
+
 
 func _physics_process(_delta):
 	# Get input if we are in IDLE or WALK state
@@ -51,7 +53,7 @@ func _physics_process(_delta):
 
 	# Idle <-> Walk state check
 	if current_state != PlayerState.PIE:
-		if velocity.is_zero_approx(): 
+		if velocity.is_zero_approx():
 			set_state(PlayerState.IDLE)
 		else:
 			set_state(PlayerState.WALK)
@@ -80,3 +82,8 @@ func _on_animated_sprite_2d_animation_finished():
 	# Unlock other animations if action just finished
 	if animated_sprite.animation == "Pie Throw":
 		set_state(PlayerState.IDLE)
+		var pie = pie_projectile.instantiate()
+		owner.add_child(pie)
+		pie.position = $PieSpawnPoint.global_position
+		print("Throwing pie left: ", animated_sprite.flip_h)
+		pie.throw(animated_sprite.flip_h)
