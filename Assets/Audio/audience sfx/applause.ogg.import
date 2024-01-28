@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5irtxq6c5ib7"
+path="res://.godot/imported/applause.ogg-9b240111d128aa707e94deb8ff9c5b7e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/audience sfx/applause.ogg"
+dest_files=["res://.godot/imported/applause.ogg-9b240111d128aa707e94deb8ff9c5b7e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

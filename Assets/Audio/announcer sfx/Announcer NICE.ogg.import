@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tsgaig5vinnb"
+path="res://.godot/imported/Announcer NICE.ogg-278442a722d03fc50294ab2a7c854f23.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer NICE.ogg"
+dest_files=["res://.godot/imported/Announcer NICE.ogg-278442a722d03fc50294ab2a7c854f23.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

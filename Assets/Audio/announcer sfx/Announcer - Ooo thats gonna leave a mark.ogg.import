@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c374bah3xmdvn"
+path="res://.godot/imported/Announcer - Ooo thats gonna leave a mark.ogg-80fa128ba7b89da56eff4664a80c3c89.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer - Ooo thats gonna leave a mark.ogg"
+dest_files=["res://.godot/imported/Announcer - Ooo thats gonna leave a mark.ogg-80fa128ba7b89da56eff4664a80c3c89.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

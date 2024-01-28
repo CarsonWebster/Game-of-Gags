@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vcdv4t8frsje"
+path="res://.godot/imported/Announcer epic prank.ogg-60285f3a7df6a42f0d933caad3715bbc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer epic prank.ogg"
+dest_files=["res://.godot/imported/Announcer epic prank.ogg-60285f3a7df6a42f0d933caad3715bbc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

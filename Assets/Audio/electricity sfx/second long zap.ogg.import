@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://okddbf4p8nhc"
+path="res://.godot/imported/second long zap.ogg-94352bfc1c138c5754c131fdaa74b304.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/electricity sfx/second long zap.ogg"
+dest_files=["res://.godot/imported/second long zap.ogg-94352bfc1c138c5754c131fdaa74b304.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

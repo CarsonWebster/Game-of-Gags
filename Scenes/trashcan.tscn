@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://bg3bohsro6lbs"]
+
+[ext_resource type="Texture2D" uid="uid://cxfxf8nxad5q" path="res://Assets/objects/trash-can.png" id="1_wrerg"]
+[ext_resource type="Texture2D" uid="uid://cnkfag3ty7mit" path="res://Assets/objects/trash-can-spawn-banana-spritesheet.png" id="2_oqqul"]
+[ext_resource type="AudioStream" uid="uid://cwneq7rvnmn20" path="res://Assets/Audio/folly work sfx/Banana spawn sfx.wav" id="3_brfy3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t44o"]
+atlas = ExtResource("1_wrerg")
+region = Rect2(0, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nm3g"]
+atlas = ExtResource("2_oqqul")
+region = Rect2(0, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spinh"]
+atlas = ExtResource("2_oqqul")
+region = Rect2(17, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tsqk"]
+atlas = ExtResource("2_oqqul")
+region = Rect2(34, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsqp7"]
+atlas = ExtResource("2_oqqul")
+region = Rect2(51, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luk1d"]
+atlas = ExtResource("2_oqqul")
+region = Rect2(68, 0, 17, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_20qrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t44o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nm3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spinh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tsqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsqp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luk1d")
+}],
+"loop": true,
+"name": &"Spawn",
+"speed": 5.0
+}]
+
+[node name="Trashcan" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_20qrl")
+animation = &"Spawn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_brfy3")

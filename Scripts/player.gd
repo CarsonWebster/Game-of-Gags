@@ -89,8 +89,12 @@ func _physics_process(_delta):
 			animated_sprite.play("Idle")
 		PlayerState.WALK:
 			animated_sprite.play("Walk")
+			if not $Walk.playing:
+				$Walk.play()
 		PlayerState.BANANA_WALK:
 			animated_sprite.play("Banana Walk")
+			if not $BananaWalk.playing:
+				$BananaWalk.play()
 		PlayerState.PIE_WALK:
 			animated_sprite.play("Pie Walk")
 		PlayerState.PIE:
@@ -99,6 +103,8 @@ func _physics_process(_delta):
 			animated_sprite.play("Banana Drop")
 		PlayerState.SHOCK:
 			animated_sprite.play("Handshake Miss")
+			if not $Zap.playing:
+				$Zap.play()
 
 	# Move and adjust postion
 	move_and_slide()
@@ -126,6 +132,8 @@ func throw_pie():
 		owner.add_child(pie)
 		pie.position = $PieSpawnPoint.global_position
 		pie.throw(animated_sprite.flip_h)
+		if not $PieThrow.playing:
+				$PieThrow.play()
 
 func drop_banana():
 	if player_stats.current_bananas > 0:
@@ -134,3 +142,5 @@ func drop_banana():
 		var banana = banana_trap.instantiate()
 		owner.add_child(banana)
 		banana.position = $BananaSpawnPoint.global_position
+		if not $BananaDrop.playing:
+			$BananaDrop.play()

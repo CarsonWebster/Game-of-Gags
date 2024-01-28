@@ -9,6 +9,7 @@ var paused: bool = false
 
 func _ready():
 	paused = false
+	$StartGameSound.play()
 	game_music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csv73j6dl177r"
+path="res://.godot/imported/Announcer you just got pranked.ogg-eeecd659041aa11bf043fcd7b14d8743.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer you just got pranked.ogg"
+dest_files=["res://.godot/imported/Announcer you just got pranked.ogg-eeecd659041aa11bf043fcd7b14d8743.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

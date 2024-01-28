@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c5dwg3dog72om"
+path="res://.godot/imported/half second zap with grunt.ogg-7a9e3c0a5bf3b8f90c8481a3e0e9a825.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/electricity sfx/half second zap with grunt.ogg"
+dest_files=["res://.godot/imported/half second zap with grunt.ogg-7a9e3c0a5bf3b8f90c8481a3e0e9a825.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

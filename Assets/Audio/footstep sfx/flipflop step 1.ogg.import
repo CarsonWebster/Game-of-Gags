@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kuvn6ew4681r"
+path="res://.godot/imported/flipflop step 1.ogg-75f67d0c44ba8510c6291e29a3e60288.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/footstep sfx/flipflop step 1.ogg"
+dest_files=["res://.godot/imported/flipflop step 1.ogg-75f67d0c44ba8510c6291e29a3e60288.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
