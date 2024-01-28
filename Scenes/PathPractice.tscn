@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctwx2grj768l1"]
+[gd_scene load_steps=6 format=3 uid="uid://ctwx2grj768l1"]
 
 [ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="1_hv6et"]
+[ext_resource type="Script" path="res://Scripts/npc_manager.gd" id="2_kp7ra"]
+[ext_resource type="PackedScene" uid="uid://df0saknedwvq1" path="res://Scenes/npc_path.tscn" id="3_gagd5"]
+
+[sub_resource type="Curve2D" id="Curve2D_dv3q6"]
+_data = {
+"points": PackedVector2Array(-133.635, -18.7089, 133.635, 18.7089, -29, 276, -142.544, -1.7818, 142.544, 1.7818, 232, 168, -77.5083, -26.727, 77.5083, 26.727, 501, 348, 0, 0, 0, 0, 696, 367)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_jkx1m"]
+_data = {
+"points": PackedVector2Array(-310.924, 48.9995, 310.924, -48.9995, -16, 444, -32.0724, 42.7632, 32.0724, -42.7632, 239, 202, -119.381, -11.5817, 119.381, 11.5817, 677, 158)
+}
+point_count = 3
 
 [node name="PathPractice" type="Node2D"]
 
@@ -8,3 +22,33 @@
 position = Vector2(321, 240)
 
 [node name="Player" parent="." instance=ExtResource("1_hv6et")]
+position = Vector2(275, 286)
+
+[node name="Npcs" type="Node2D" parent="."]
+script = ExtResource("2_kp7ra")
+
+[node name="Paths" type="Node2D" parent="Npcs"]
+
+[node name="Path1" parent="Npcs/Paths" instance=ExtResource("3_gagd5")]
+
+[node name="Path2" parent="Npcs/Paths" instance=ExtResource("3_gagd5")]
+curve = SubResource("Curve2D_dv3q6")
+
+[node name="PathFollow2D" parent="Npcs/Paths/Path2" index="0"]
+position = Vector2(-29, 276)
+
+[node name="Path3" parent="Npcs/Paths" instance=ExtResource("3_gagd5")]
+curve = SubResource("Curve2D_jkx1m")
+
+[node name="PathFollow2D" parent="Npcs/Paths/Path3" index="0"]
+position = Vector2(-16, 444)
+
+[node name="NpcTimer" type="Timer" parent="Npcs"]
+
+[connection signal="finished_walk" from="Npcs/Paths/Path1/PathFollow2D" to="Npcs" method="_on_path_follow_2d_finished_walk"]
+[connection signal="finished_walk" from="Npcs/Paths/Path2/PathFollow2D" to="Npcs" method="_on_path_follow_2d_finished_walk"]
+[connection signal="finished_walk" from="Npcs/Paths/Path3/PathFollow2D" to="Npcs" method="_on_path_follow_2d_finished_walk"]
+
+[editable path="Npcs/Paths/Path1"]
+[editable path="Npcs/Paths/Path2"]
+[editable path="Npcs/Paths/Path3"]

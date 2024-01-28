@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bw3on0ctfje7u"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
-[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/player.tscn" id="1_xncld"]
+[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="1_xncld"]
 [ext_resource type="Texture2D" uid="uid://kca2x1hh2ne6" path="res://Assets/Enviroment/road-sidewalk-test.png" id="2_8regs"]
 [ext_resource type="Texture2D" uid="uid://bbc466b3pl0md" path="res://Assets/Enviroment/horrible-building.png" id="3_lwsj5"]
 [ext_resource type="Script" path="res://Scripts/VictimSpawner.gd" id="5_jkvxr"]

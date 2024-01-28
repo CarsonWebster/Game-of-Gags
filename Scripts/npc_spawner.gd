@@ -1,3 +1,4 @@
+class_name NpcSpawner
 extends Node2D
 
 const max_npcs = 3
@@ -10,12 +11,14 @@ var rng = RandomNumberGenerator.new()
 
 #readies a timer that spawns the first npc after a short time
 func _ready():
+	print("starting")
 	timer.one_shot = true
 	var rand = rng.randf_range(0.0, 2.0)
 	timer.start(rand)
 
 #spawns an npc at this location and makes it move in the given direction
 func spawn_npc():
+	print(name, " is spawning")
 	var instance = npc.instantiate()
 	npc_list.add_child(instance)
 	instance.name = "npc"
