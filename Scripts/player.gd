@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var SPRINT_MULTIPLIER = 3.0
 
 @export var pie_projectile: PackedScene
+@export var banana_trap: PackedScene
 
 var screen_size
 
@@ -36,21 +37,22 @@ func _ready():
 	current_state = PlayerState.IDLE
 	
 func _process(_delta):
-	if Input.is_action_pressed("attack1"):
+	if Input.is_action_pressed("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA_WALK)
-	if Input.is_action_just_released("attack1"):
+	if Input.is_action_just_released("attack1") and player_stats.current_bananas > 0:
 		set_state(PlayerState.BANANA)
-	if Input.is_action_pressed("attack2"):
+		drop_banana()
+	if Input.is_action_pressed("attack2") and player_stats.current_pies > 0:
 		set_state(PlayerState.PIE_WALK)
-	if Input.is_action_just_released("attack2"):
+	if Input.is_action_just_released("attack2") and player_stats.current_pies > 0:
 		set_state(PlayerState.PIE)
-	if Input.is_action_pressed("attack3"):
+	if Input.is_action_pressed("attack3") and player_stats.current_shocks > 0:
 		set_state(PlayerState.SHOCK)
 
 
 func _physics_process(_delta):
 	# Get input if we are in IDLE or WALK state
-	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK or current_state == PlayerState.BANANA_WALK or current_state == PlayerState.PIE_WALK:
+	if current_state in MoveableStates:
 		var horizontal_direction = Input.get_axis("walk_left", "walk_right")
 		if horizontal_direction:
 			velocity.x = horizontal_direction * HORIZONTAL_SPEED

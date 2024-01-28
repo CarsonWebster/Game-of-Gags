@@ -1,8 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://yx8ru4t7xdym"]
+[gd_scene load_steps=47 format=3 uid="uid://yx8ru4t7xdym"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
 [ext_resource type="PackedScene" uid="uid://cdqvs40i20m17" path="res://Scenes/pie_projectile.tscn" id="2_oqtrl"]
+[ext_resource type="PackedScene" uid="uid://dtcv83atmosyg" path="res://Scenes/banana_trap.tscn" id="3_i5fui"]
 [ext_resource type="Texture2D" uid="uid://b2kowttrnwbbv" path="res://Assets/player/player-pie-throw-spritesheet.png" id="3_vpq03"]
 [ext_resource type="Texture2D" uid="uid://bl28vks56xfn" path="res://Assets/player/player-banana-drop-spritesheet.png" id="3_vw2ce"]
 [ext_resource type="Texture2D" uid="uid://dsuuvuciiakhc" path="res://Assets/player/player-banana-walk-spritesheet.png" id="4_fnmqy"]
@@ -287,6 +288,7 @@ height = 14.0
 motion_mode = 1
 script = ExtResource("1_obtye")
 pie_projectile = ExtResource("2_oqtrl")
+banana_trap = ExtResource("3_i5fui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fubbr")
@@ -306,5 +308,8 @@ shape = SubResource("CircleShape2D_uvvhg")
 
 [node name="PieSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(10, 0)
+
+[node name="BananaSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 13)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
