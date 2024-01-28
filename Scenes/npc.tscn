@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6aeg2h5mgx7h"]
+
+[ext_resource type="Texture2D" uid="uid://w3e8y4542qww" path="res://Assets/Player/Walk 128x64.png" id="1_3oq3f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1agtd"]
+atlas = ExtResource("1_3oq3f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng1of"]
+atlas = ExtResource("1_3oq3f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iyuh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1agtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng1of")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scyvy"]
+height = 22.0
+
+[node name="Npc" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_iyuh5")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_scyvy")
