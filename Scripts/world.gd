@@ -4,6 +4,7 @@ extends Node2D
 @onready var hud = $ui_container/HUD
 @onready var game_timer = $GameTimer
 @onready var game_music = $GameMusic
+
 var paused: bool = false
 
 func _ready():

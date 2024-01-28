@@ -1,10 +1,50 @@
-[gd_scene load_steps=15 format=3 uid="uid://yx8ru4t7xdym"]
+[gd_scene load_steps=42 format=3 uid="uid://yx8ru4t7xdym"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
 [ext_resource type="PackedScene" uid="uid://cdqvs40i20m17" path="res://Scenes/pie_projectile.tscn" id="2_oqtrl"]
 [ext_resource type="Texture2D" uid="uid://b2kowttrnwbbv" path="res://Assets/player/player-pie-throw-spritesheet.png" id="3_vpq03"]
+[ext_resource type="Texture2D" uid="uid://bl28vks56xfn" path="res://Assets/player/player-banana-drop-spritesheet.png" id="3_vw2ce"]
 [ext_resource type="Texture2D" uid="uid://dsuuvuciiakhc" path="res://Assets/player/player-banana-walk-spritesheet.png" id="4_fnmqy"]
+[ext_resource type="Texture2D" uid="uid://ceclqxxttr2gt" path="res://Assets/player/player-stand-handshake.png" id="5_n72ix"]
+[ext_resource type="Texture2D" uid="uid://bqu65a8i36pxi" path="res://Assets/player/player-handshake-miss.png" id="5_pnvgl"]
+[ext_resource type="Texture2D" uid="uid://dp1a3gooh35a" path="res://Assets/player/player-victory-spritesheet.png" id="8_q2da5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x01mb"]
+atlas = ExtResource("3_vw2ce")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xijc8"]
+atlas = ExtResource("3_vw2ce")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r17cc"]
+atlas = ExtResource("3_vw2ce")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el4h2"]
+atlas = ExtResource("3_vw2ce")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kumqu"]
+atlas = ExtResource("4_fnmqy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcyjj"]
+atlas = ExtResource("4_fnmqy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4shtt"]
+atlas = ExtResource("5_n72ix")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ti35"]
+atlas = ExtResource("5_pnvgl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17etk"]
+atlas = ExtResource("5_pnvgl")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dos7"]
 atlas = ExtResource("2_7acw1")
@@ -22,6 +62,62 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("3_vpq03")
 region = Rect2(128, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7iuy"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt7tg"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbe8n"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kfo4"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmdjb"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yet83"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tak2"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si1e0"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm14v"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdatb"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf85t"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tuwa"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f0ci"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohcp2"]
+atlas = ExtResource("8_q2da5")
+region = Rect2(832, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhenm"]
 atlas = ExtResource("4_fnmqy")
 region = Rect2(0, 0, 64, 64)
@@ -32,6 +128,53 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fubbr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x01mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xijc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r17cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el4h2")
+}],
+"loop": true,
+"name": &"Banana Drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kumqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcyjj")
+}],
+"loop": true,
+"name": &"Banana Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4shtt")
+}],
+"loop": true,
+"name": &"Handshake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ti35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17etk")
+}],
+"loop": true,
+"name": &"Handshake Miss",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1dos7")
@@ -52,6 +195,53 @@ animations = [{
 }],
 "loop": false,
 "name": &"Pie Throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7iuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt7tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbe8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kfo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmdjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yet83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tak2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si1e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm14v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdatb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf85t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tuwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f0ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohcp2")
+}],
+"loop": true,
+"name": &"Victory",
 "speed": 5.0
 }, {
 "frames": [{
@@ -79,8 +269,7 @@ pie_projectile = ExtResource("2_oqtrl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fubbr")
-animation = &"Pie Throw"
-frame = 2
+animation = &"Banana Drop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)

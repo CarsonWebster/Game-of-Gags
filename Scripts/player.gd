@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
-
+@onready var player_stats = $"../../ManagerContainer/PlayerStatHandler"
 @onready var EntityContainer = $".."
 
 @export var HORIZONTAL_SPEED = 100.0
@@ -17,7 +17,11 @@ enum PlayerState {
 	IDLE,
 	WALK,
 	PIE,
+	BANANA_WALK,
+	BANANA,
+	SHOCK,
 }
+
 var current_state: PlayerState
 func set_state(new_state: PlayerState):
 	if current_state != new_state:
@@ -28,13 +32,19 @@ func _ready():
 	current_state = PlayerState.IDLE
 	
 func _process(_delta):
+	if Input.is_action_pressed("attack1"):
+		set_state(PlayerState.BANANA_WALK)
+	if Input.is_action_just_released("attack1"):
+		set_state(PlayerState.BANANA)
 	if Input.is_action_just_pressed("attack2"):
 		set_state(PlayerState.PIE)
+	if Input.is_action_just_pressed("attack3"):
+		set_state(PlayerState.SHOCK)
 
 
 func _physics_process(_delta):
 	# Get input if we are in IDLE or WALK state
-	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK:
+	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK or current_state == PlayerState.BANANA_WALK:
 		var horizontal_direction = Input.get_axis("walk_left", "walk_right")
 		if horizontal_direction:
 			velocity.x = horizontal_direction * HORIZONTAL_SPEED
@@ -52,7 +62,7 @@ func _physics_process(_delta):
 		velocity.y = move_toward(velocity.y, 0, VERTICAL_SPEED)
 
 	# Idle <-> Walk state check
-	if current_state != PlayerState.PIE:
+	if current_state != PlayerState.PIE or current_state != PlayerState.BANANA or current_state != PlayerState.SHOCK:
 		if velocity.is_zero_approx():
 			set_state(PlayerState.IDLE)
 		else:
@@ -69,8 +79,14 @@ func _physics_process(_delta):
 			animated_sprite.play("Idle")
 		PlayerState.WALK:
 			animated_sprite.play("Walk")
+		PlayerState.BANANA_WALK:
+			animated_sprite.play("Banana Walk")
 		PlayerState.PIE:
 			animated_sprite.play("Pie Throw")
+		PlayerState.BANANA:
+			animated_sprite.play("Banana Drop")
+		PlayerState.SHOCK:
+			animated_sprite.play("Handshake")
 
 	# Move and adjust postion
 	move_and_slide()
