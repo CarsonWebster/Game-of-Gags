@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmqd0i1lne3cy"
-path="res://.godot/imported/pie-throw.png-9969cd23bbb618baba4503aa0b70e84e.ctex"
+uid="uid://bq4qkloff83gy"
+path="res://.godot/imported/player-stand.png-c883091d80e222d9efa8fe30cb589dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/pie-throw.png"
-dest_files=["res://.godot/imported/pie-throw.png-9969cd23bbb618baba4503aa0b70e84e.ctex"]
+source_file="res://Assets/player/player-stand.png"
+dest_files=["res://.godot/imported/player-stand.png-c883091d80e222d9efa8fe30cb589dd5.ctex"]
 
 [params]
 

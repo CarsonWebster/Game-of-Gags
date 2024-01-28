@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crir22q4u68vv"]
+[gd_scene load_steps=11 format=3 uid="uid://crir22q4u68vv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
 [ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/player.tscn" id="1_xncld"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/MovingCamera.gd" id="7_al342"]
 [ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="7_m01t3"]
 [ext_resource type="PackedScene" uid="uid://b1mmlpyqvrekr" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
+[ext_resource type="PackedScene" uid="uid://47n6gpt83kqu" path="res://Scenes/hud.tscn" id="9_h3ay0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
 size = Vector2(151, 111)
@@ -76,7 +77,9 @@ position = Vector2(550, 410)
 [node name="Marker2D4" type="Marker2D" parent="MovingCamera/Corrners"]
 position = Vector2(74, 413)
 
-[node name="PauseMenu" parent="." instance=ExtResource("8_t6m8a")]
+[node name="ui_container" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="ui_container" instance=ExtResource("8_t6m8a")]
 visible = false
 offset_left = 208.0
 offset_top = 140.0
@@ -84,4 +87,11 @@ offset_right = 208.0
 offset_bottom = 140.0
 scale = Vector2(3.20148, 3.20148)
 
+[node name="HUD" parent="ui_container" instance=ExtResource("9_h3ay0")]
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="timeout" from="VictimSpawner/Timer" to="VictimSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

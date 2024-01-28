@@ -5,8 +5,8 @@
 [sub_resource type="GDScript" id="GDScript_152ko"]
 script/source = "extends Control
 
-# Get parent reference
-@onready var main = $\"../\"
+# Get parent reference by going back twice to get main
+@onready var main = $\"../..\"
 
 func focus():
 	$MarginContainer/VBoxContainer/ResumeButton.get_focus()

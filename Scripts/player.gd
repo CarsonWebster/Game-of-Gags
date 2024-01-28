@@ -2,14 +2,13 @@ extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-@export var SPEED = 100.0
+@export var HORIZONTAL_SPEED = 100.0
+@export var VERTICAL_SPEED = 80.0
+@export var SPRINT_MULTIPLIER = 3.0
 
 var screen_size
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
+# Player Action States
 enum PlayerState {
 	IDLE,
 	WALK,
@@ -32,33 +31,37 @@ func _process(_delta):
 		
 
 func _physics_process(_delta):
+	# Get input if we are in IDLE or WALK state
 	if current_state == PlayerState.IDLE or current_state == PlayerState.WALK:
 		var horizontal_direction = Input.get_axis("walk_left", "walk_right")
 		if horizontal_direction:
-			velocity.x = horizontal_direction * SPEED
+			velocity.x = horizontal_direction * HORIZONTAL_SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, HORIZONTAL_SPEED)
 
 		var vertical_direction = Input.get_axis("walk_up", "walk_down")
 		if vertical_direction:
-			velocity.y = vertical_direction * SPEED
+			velocity.y = vertical_direction * VERTICAL_SPEED
 		else:
-			velocity.y = move_toward(velocity.y, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, VERTICAL_SPEED)
+	# Otherwise no movement
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-	
+		velocity.x = move_toward(velocity.x, 0, HORIZONTAL_SPEED)
+		velocity.y = move_toward(velocity.y, 0, VERTICAL_SPEED)
+
+	# Idle <-> Walk state check
 	if current_state != PlayerState.PIE:
 		if velocity.is_zero_approx(): 
 			set_state(PlayerState.IDLE)
 		else:
 			set_state(PlayerState.WALK)
-	
+	# Sprite flip check
 	if velocity.x < 0 && not velocity.is_zero_approx():
 		animated_sprite.flip_h = true
 	elif velocity.x > 0 && not velocity.is_zero_approx():
 		animated_sprite.flip_h = false
 	
+	# Play current state animation
 	match current_state:
 		PlayerState.IDLE:
 			animated_sprite.play("Idle")
@@ -67,17 +70,13 @@ func _physics_process(_delta):
 		PlayerState.PIE:
 			animated_sprite.play("Pie Throw")
 
+	# Move and adjust postion
 	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 
-
-func _on_animated_sprite_2d_animation_changed():
-	#print("Animation changed!: ", animated_sprite.animation)
-	pass
-
-
+# Ugly animation state machine right here
 func _on_animated_sprite_2d_animation_finished():
-	#print("An animation finished!: ", animated_sprite.animation)
+	# Unlock other animations if action just finished
 	if animated_sprite.animation == "Pie Throw":
 		set_state(PlayerState.IDLE)

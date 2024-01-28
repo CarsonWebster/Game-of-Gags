@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bni4lyuc1mk0u"
-path="res://.godot/imported/stand.png-8ba7e69111eb09038218012d689fbd2e.ctex"
+uid="uid://cyk0dvokhqhg6"
+path="res://.godot/imported/sklyer-stand.png-a9e2ff74c1cb6e222b9f5d704e62cef0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/stand.png"
-dest_files=["res://.godot/imported/stand.png-8ba7e69111eb09038218012d689fbd2e.ctex"]
+source_file="res://Assets/skyler/sklyer-stand.png"
+dest_files=["res://.godot/imported/sklyer-stand.png-a9e2ff74c1cb6e222b9f5d704e62cef0.ctex"]
 
 [params]
 

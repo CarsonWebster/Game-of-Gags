@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w3e8y4542qww"
-path="res://.godot/imported/Walk 128x64.png-812743118f6637afaf1fe1a678bfe4cd.ctex"
+uid="uid://b167i3pmb8udu"
+path="res://.godot/imported/skyler-shocked-spritesheet.png-d8aedb58836ac21e512deb729d13fa02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Walk 128x64.png"
-dest_files=["res://.godot/imported/Walk 128x64.png-812743118f6637afaf1fe1a678bfe4cd.ctex"]
+source_file="res://Assets/skyler/skyler-shocked-spritesheet.png"
+dest_files=["res://.godot/imported/skyler-shocked-spritesheet.png-d8aedb58836ac21e512deb729d13fa02.ctex"]
 
 [params]
 
