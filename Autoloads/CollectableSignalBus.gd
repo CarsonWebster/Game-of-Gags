@@ -10,12 +10,14 @@ signal shock_collected(resourece: BaseCollectableResource)
 signal banana_dropped(resource: BaseCollectableResource)
 signal pie_dropped(resource: BaseCollectableResource)
 signal shock_dropped(resource: BaseCollectableResource)
+
 #endregion
 
 #region ui update signals
 signal on_update_banana(value: int)
 signal on_update_pie(value: int)
 signal on_update_shock(value: int)
+signal on_update_score(new_value: int)
 #endregion
 
 func emit_on_update_banana(value: int) -> void:

@@ -12,10 +12,6 @@ func _ready():
 	banana_timer.wait_time = randi_range(5, 20)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite.animation == "Spawn":
 		animated_sprite.play("Idle")
