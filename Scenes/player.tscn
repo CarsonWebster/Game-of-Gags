@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://yx8ru4t7xdym"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
 [ext_resource type="PackedScene" uid="uid://cdqvs40i20m17" path="res://Scenes/pie_projectile.tscn" id="2_oqtrl"]
 [ext_resource type="PackedScene" uid="uid://dtcv83atmosyg" path="res://Scenes/banana_trap.tscn" id="3_i5fui"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ceclqxxttr2gt" path="res://Assets/player/player-stand-handshake.png" id="5_n72ix"]
 [ext_resource type="Texture2D" uid="uid://bqu65a8i36pxi" path="res://Assets/player/player-handshake-miss.png" id="5_pnvgl"]
 [ext_resource type="Texture2D" uid="uid://dp1a3gooh35a" path="res://Assets/player/player-victory-spritesheet.png" id="8_q2da5"]
-[ext_resource type="Texture2D" uid="uid://do7myhuyr2eje" path="res://Assets/player/player-pie-walk-spritesheet.png" id="9_mmtof"]
-[ext_resource type="Texture2D" uid="uid://c8jtop5yqsrsw" path="res://Assets/player/player-walk-spritesheet.png" id="10_2vgfl"]
+[ext_resource type="Texture2D" uid="uid://ftw8f1xd2egy" path="res://Assets/player/player-pie-walk-spritesheet.png" id="9_mmtof"]
+[ext_resource type="Texture2D" uid="uid://dwp8iosyffadq" path="res://Assets/player/player-walk-spritesheet.png" id="10_2vgfl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x01mb"]
 atlas = ExtResource("3_vw2ce")

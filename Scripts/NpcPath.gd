@@ -19,14 +19,15 @@ func _physics_process(delta):
 		return
 	progress += pixel_speed * delta
 	if progress_ratio >= 1:
+		reset()
 		finished_walk.emit($".")
 
 func set_in_use(b: bool):
-	print(name, " set in use: ", b)
 	in_use = b
-	if progress == 0.0:
-		walker.add_to_group("active_npcs")
+	walker.add_to_group("active_npcs")
+	#if progress == 0.0 && in_use:
+	#	walker.add_to_group("active_npcs")
 	
 func reset():
-	progress = 0.0
+	progress_ratio = 0.0
 	walker.remove_from_group("active_npcs")

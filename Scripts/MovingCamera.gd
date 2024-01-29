@@ -1,11 +1,13 @@
-extends Area2D
+extends Node2D
 
 @onready var corrners = $Corrners
 @onready var offset_timer = $OffsetTimer
+@onready var state_timer = $StateTimer
+@export var cam_square: Area2D
 @export var cam_paths: Array[PathFollow2D]
 const move_to_speed = 80.0
-const hover_speed = 10.0
-const max_offset: float = 10.0
+const hover_speed = 40.0
+const max_offset: float = 2.0
 
 enum State {
 	GO_TO_POSITION,
@@ -23,16 +25,17 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	state_timer.start(10.0)
 	choose_new_target()
 
 func _process(delta):
 	if [State.GO_TO_POSITION, State.GO_TO_PATH, State.GO_TO_NPC].has(current_state):
-		position = position.move_toward(target.position, delta * move_to_speed)
-		if position == target.position:
+		cam_square.position = cam_square.position.move_toward(target.position, delta * move_to_speed)
+		if cam_square.position == target.position:
 			choose_next_state()
 	elif [State.HOVER_ON_POSITION, State.HOVER_ON_NPC, State.HOVER_ON_PATH].has(current_state):
 		#print(target)
-		position = position.move_toward(target.position + offset, delta * hover_speed)
+		cam_square.position = cam_square.position.move_toward(target.position + offset, delta * hover_speed)
 
 func randomize_offset():
 	offset = Vector2(rng.randf_range(-max_offset, max_offset), rng.randf_range(-max_offset, max_offset))
@@ -51,7 +54,11 @@ func choose_next_state():
 
 func choose_new_target():
 	if current_state == State.GO_TO_NPC:
-		target = get_tree().get_nodes_in_group("active_npcs").pick_random().get_parent()
+		var actives = get_tree().get_nodes_in_group("active_npcs")
+		if actives.size() > 0:
+			target = get_tree().get_nodes_in_group("active_npcs").pick_random().get_parent()
+		else:
+			target = cam_paths.pick_random()
 	elif current_state == State.GO_TO_PATH:
 		target = cam_paths.pick_random()
 	elif current_state == State.GO_TO_POSITION:

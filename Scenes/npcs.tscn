@@ -1,19 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds3l4cta60sk3"]
+[gd_scene load_steps=10 format=3 uid="uid://ds3l4cta60sk3"]
 
 [ext_resource type="Script" path="res://Scripts/npc_manager.gd" id="1_61eft"]
 [ext_resource type="PackedScene" uid="uid://df0saknedwvq1" path="res://Scenes/npc_path.tscn" id="2_ncspy"]
 
 [sub_resource type="Curve2D" id="Curve2D_dv3q6"]
 _data = {
-"points": PackedVector2Array(-133.635, -18.7089, 133.635, 18.7089, -29, 276, -142.544, -1.7818, 142.544, 1.7818, 232, 168, -77.5083, -26.727, 77.5083, 26.727, 501, 348, 0, 0, 0, 0, 696, 367)
+"points": PackedVector2Array(-179.192, 3.53983, 179.192, -3.53983, -21, 342, -113.938, -3.90073, 113.938, 3.90073, 218, 342, -72.211, 28.3651, 72.211, -28.3651, 459, 174, 0, 0, 0, 0, 673, 166)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_jkx1m"]
 _data = {
-"points": PackedVector2Array(-310.924, 48.9995, 310.924, -48.9995, -16, 444, -32.0724, 42.7632, 32.0724, -42.7632, 239, 202, -119.381, -11.5817, 119.381, 11.5817, 677, 158)
+"points": PackedVector2Array(-106.448, 2.38311, 106.448, -2.38311, -14, 431, -67.8057, 12.7136, 67.8057, -12.7136, 189, 423, -113.651, 6.74144, 113.651, -6.74144, 322, 371, -83.6976, 0, 83.6976, 0, 502, 422, -116.203, 7.48864, 116.203, -7.48864, 693, 418)
 }
-point_count = 3
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_5q51p"]
+_data = {
+"points": PackedVector2Array(29.665, 29.665, -29.665, -29.665, 543, 511, 25.4271, 56.1516, -25.4271, -56.1516, 364, 321, -36.0218, 15.892, 36.0218, -15.892, 429, 157, 0, 0, 0, 0, 673, 128)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_0uvnt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -11.7943, 171.23, 0, 0, 0, 0, 673.257, 143.517)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_sx6iq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 671.291, 154.404, 0, 0, 0, 0, -26.5371, 132.629)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_h1yny"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 661.462, 324.644, 0, 0, 0, 0, -30.4686, 320.685)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_sy4jg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 97.3028, 502.803, -117.943, 26.7238, 117.943, -26.7238, 210.331, 347.409, 11.7943, 17.8158, -11.7943, -17.8158, 460.96, 162.322, 0, 0, 0, 0, -28.5028, 158.363)
+}
+point_count = 4
 
 [node name="Npcs" type="Node2D"]
 script = ExtResource("1_61eft")
@@ -30,7 +60,7 @@ one_shot = true
 curve = SubResource("Curve2D_dv3q6")
 
 [node name="PathFollow2D" parent="Paths/Path2" index="0"]
-position = Vector2(-29, 276)
+position = Vector2(-21, 342)
 
 [node name="_Timer_31463" type="Timer" parent="Paths/Path2/PathFollow2D" index="1"]
 wait_time = 0.2
@@ -40,9 +70,69 @@ one_shot = true
 curve = SubResource("Curve2D_jkx1m")
 
 [node name="PathFollow2D" parent="Paths/Path3" index="0"]
-position = Vector2(-16, 444)
+position = Vector2(-14, 431)
 
 [node name="_Timer_31464" type="Timer" parent="Paths/Path3/PathFollow2D" index="1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Path4" parent="Paths" instance=ExtResource("2_ncspy")]
+position = Vector2(-10, -7)
+scale = Vector2(1.01744, 1.01034)
+curve = SubResource("Curve2D_5q51p")
+
+[node name="PathFollow2D" parent="Paths/Path4" index="0"]
+position = Vector2(543, 511)
+
+[node name="_Timer_31464" type="Timer" parent="Paths/Path4/PathFollow2D" index="1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Path5" parent="Paths" instance=ExtResource("2_ncspy")]
+position = Vector2(-10, -7)
+scale = Vector2(1.01744, 1.01034)
+curve = SubResource("Curve2D_0uvnt")
+
+[node name="PathFollow2D" parent="Paths/Path5" index="0"]
+position = Vector2(-11.7943, 171.23)
+
+[node name="_Timer_31464" type="Timer" parent="Paths/Path5/PathFollow2D" index="1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Path6" parent="Paths" instance=ExtResource("2_ncspy")]
+position = Vector2(-10, -7)
+scale = Vector2(1.01744, 1.01034)
+curve = SubResource("Curve2D_sx6iq")
+
+[node name="PathFollow2D" parent="Paths/Path6" index="0"]
+position = Vector2(671.291, 154.404)
+
+[node name="_Timer_31464" type="Timer" parent="Paths/Path6/PathFollow2D" index="1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Path7" parent="Paths" instance=ExtResource("2_ncspy")]
+position = Vector2(-10, -7)
+scale = Vector2(1.01744, 1.01034)
+curve = SubResource("Curve2D_h1yny")
+
+[node name="PathFollow2D" parent="Paths/Path7" index="0"]
+position = Vector2(661.462, 324.644)
+
+[node name="_Timer_31464" type="Timer" parent="Paths/Path7/PathFollow2D" index="1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Path8" parent="Paths" instance=ExtResource("2_ncspy")]
+position = Vector2(-10, -7)
+scale = Vector2(1.01744, 1.01034)
+curve = SubResource("Curve2D_sy4jg")
+
+[node name="PathFollow2D" parent="Paths/Path8" index="0"]
+position = Vector2(97.3028, 502.803)
+
+[node name="_Timer_31464" type="Timer" parent="Paths/Path8/PathFollow2D" index="1"]
 wait_time = 0.2
 one_shot = true
 
@@ -55,3 +145,8 @@ one_shot = true
 [editable path="Paths/Path1"]
 [editable path="Paths/Path2"]
 [editable path="Paths/Path3"]
+[editable path="Paths/Path4"]
+[editable path="Paths/Path5"]
+[editable path="Paths/Path6"]
+[editable path="Paths/Path7"]
+[editable path="Paths/Path8"]
