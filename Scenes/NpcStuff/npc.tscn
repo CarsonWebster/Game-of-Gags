@@ -32,7 +32,6 @@ height = 22.0
 script = ExtResource("1_aoura")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_iyuh5")
 animation = &"morgan_walk"
 autoplay = "morgan_walk"
