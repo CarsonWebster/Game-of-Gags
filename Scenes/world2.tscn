@@ -1,10 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dbsie3pcjayw7"]
+[gd_scene load_steps=14 format=3 uid="uid://rurpqbks4x0h"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_4ljl2"]
 [ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="2_b7p6g"]
-[ext_resource type="Script" path="res://Scripts/MovingCamera.gd" id="5_dmxda"]
-[ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="6_20yt6"]
-[ext_resource type="Script" path="res://Scripts/ConstantFollow.gd" id="7_ru5uv"]
+[ext_resource type="PackedScene" uid="uid://bhsfhj5dd74di" path="res://Scenes/moving_camera.tscn" id="3_txgtj"]
 [ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="8_eqtw5"]
 [ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="9_djmc6"]
 [ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_cus3j"]
@@ -15,27 +13,6 @@
 [ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="15_e06sj"]
 [ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="16_q1o2t"]
 [ext_resource type="PackedScene" uid="uid://ds3l4cta60sk3" path="res://Scenes/npcs.tscn" id="17_1vsmg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
-size = Vector2(151, 111)
-
-[sub_resource type="Curve2D" id="Curve2D_36x2l"]
-_data = {
-"points": PackedVector2Array(-2.10826, 85.4344, 2.10826, -85.4344, -13, 188, -54.1905, 0.243172, 54.1905, -0.243172, 124, 33, -109.759, 3.35143, 109.759, -3.35143, 370, 317, 3.5946, 55.3797, -3.5946, -55.3797, 488, 155, 90.9197, -1.18921, -90.9197, 1.18921, 366, 24, 56.434, -8.54064, -56.434, 8.54064, 126, 326, -0.567621, 61.4344, 0.567621, -61.4344, -13, 190)
-}
-point_count = 7
-
-[sub_resource type="Curve2D" id="Curve2D_lmjam"]
-_data = {
-"points": PackedVector2Array(-40.5866, 20.7652, 40.5866, -20.7652, -9, 20, -25.4846, -32.0917, 25.4846, 32.0917, 496, 12, 36.8111, -8.49487, -36.8111, 8.49487, 492, 333, 37.755, 28.3162, -37.755, -28.3162, -7, 336, -27.3724, -4.71937, 27.3724, 4.71937, -8, 19)
-}
-point_count = 5
-
-[sub_resource type="Curve2D" id="Curve2D_wgho6"]
-_data = {
-"points": PackedVector2Array(17.9336, 60.408, -17.9336, -60.408, 99, 308, -44.3621, -0.943874, 44.3621, 0.943874, 212, 25, 32.0917, -60.408, -32.0917, 60.408, 345, 281, 13.2142, 46.2498, -13.2142, -46.2498, 101, 310)
-}
-point_count = 4
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4ljl2")
@@ -50,69 +27,8 @@ texture = ExtResource("2_b7p6g")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(321, 240)
 
-[node name="MovingCamera" type="Area2D" parent="." node_paths=PackedStringArray("cam_paths")]
-position = Vector2(81, 60)
-script = ExtResource("5_dmxda")
-cam_paths = [NodePath("CamPaths/CamPath1/PathFollow2D"), NodePath("CamPaths/CamPath2/PathFollow2D"), NodePath("CamPaths/CamPath3/PathFollow2D")]
-
-[node name="Sprite2D" type="Sprite2D" parent="MovingCamera"]
-texture = ExtResource("6_20yt6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingCamera"]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_qvhpi")
-
-[node name="OffsetTimer" type="Timer" parent="MovingCamera"]
-wait_time = 0.5
-autostart = true
-
-[node name="StateTimer" type="Timer" parent="MovingCamera"]
-wait_time = 15.0
-autostart = true
-
-[node name="Corrners" type="Node2D" parent="MovingCamera"]
-
-[node name="Marker2D" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(52, 126)
-
-[node name="Marker2D2" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(348, 58)
-
-[node name="Marker2D3" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(404, 335)
-
-[node name="Marker2D4" type="Marker2D" parent="MovingCamera/Corrners"]
-position = Vector2(23, 328)
-
-[node name="CamPaths" type="Node2D" parent="MovingCamera"]
-
-[node name="CamPath1" type="Path2D" parent="MovingCamera/CamPaths"]
-position = Vector2(0, 3)
-curve = SubResource("Curve2D_36x2l")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath1"]
-position = Vector2(-13, 188)
-rotates = false
-script = ExtResource("7_ru5uv")
-speed = 50.0
-
-[node name="CamPath2" type="Path2D" parent="MovingCamera/CamPaths"]
-curve = SubResource("Curve2D_lmjam")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath2"]
-position = Vector2(-9, 20)
-rotates = false
-script = ExtResource("7_ru5uv")
-speed = 50.0
-
-[node name="CamPath3" type="Path2D" parent="MovingCamera/CamPaths"]
-curve = SubResource("Curve2D_wgho6")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MovingCamera/CamPaths/CamPath3"]
-position = Vector2(99, 308)
-rotates = false
-script = ExtResource("7_ru5uv")
-speed = 50.0
+[node name="MovingCamera" parent="." node_paths=PackedStringArray("cam_paths") instance=ExtResource("3_txgtj")]
+cam_paths = [null, null, null]
 
 [node name="ui_container" type="CanvasLayer" parent="."]
 
@@ -159,11 +75,17 @@ collectable_resource = ExtResource("15_e06sj")
 
 [node name="Npcs" parent="." instance=ExtResource("17_1vsmg")]
 
-[connection signal="timeout" from="MovingCamera/OffsetTimer" to="MovingCamera" method="_on_offset_timer_timeout"]
-[connection signal="timeout" from="MovingCamera/StateTimer" to="MovingCamera" method="_on_state_timer_timeout"]
+[node name="Path3" parent="Npcs/Paths" index="2"]
+position = Vector2(-10, -7)
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 
 [editable path="Npcs"]
 [editable path="Npcs/Paths/Path1"]
 [editable path="Npcs/Paths/Path2"]
 [editable path="Npcs/Paths/Path3"]
+[editable path="Npcs/Paths/Path4"]
+[editable path="Npcs/Paths/Path5"]
+[editable path="Npcs/Paths/Path6"]
+[editable path="Npcs/Paths/Path7"]
+[editable path="Npcs/Paths/Path8"]

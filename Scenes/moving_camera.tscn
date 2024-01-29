@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhsfhj5dd74di"]
+
+[ext_resource type="Script" path="res://Scripts/MovingCamera.gd" id="1_1wkv7"]
+[ext_resource type="Script" path="res://Scripts/ConstantFollow.gd" id="2_7hmj0"]
+[ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="3_6p1oi"]
+
+[sub_resource type="Curve2D" id="Curve2D_36x2l"]
+_data = {
+"points": PackedVector2Array(-2.10826, 85.4344, 2.10826, -85.4344, -13, 188, -54.1905, 0.243172, 54.1905, -0.243172, 124, 33, -109.759, 3.35143, 109.759, -3.35143, 370, 317, 3.5946, 55.3797, -3.5946, -55.3797, 488, 155, 90.9197, -1.18921, -90.9197, 1.18921, 366, 24, 56.434, -8.54064, -56.434, 8.54064, 126, 326, -0.567621, 61.4344, 0.567621, -61.4344, -13, 190)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_lmjam"]
+_data = {
+"points": PackedVector2Array(-40.5866, 20.7652, 40.5866, -20.7652, -9, 20, -25.4846, -32.0917, 25.4846, 32.0917, 496, 12, 36.8111, -8.49487, -36.8111, 8.49487, 492, 333, 37.755, 28.3162, -37.755, -28.3162, -7, 336, -27.3724, -4.71937, 27.3724, 4.71937, -8, 19)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_wgho6"]
+_data = {
+"points": PackedVector2Array(17.9336, 60.408, -17.9336, -60.408, 99, 308, -44.3621, -0.943874, 44.3621, 0.943874, 212, 25, 32.0917, -60.408, -32.0917, 60.408, 345, 281, 13.2142, 46.2498, -13.2142, -46.2498, 101, 310)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
+size = Vector2(151, 111)
+
+[node name="MovingCamera" type="Node2D" node_paths=PackedStringArray("cam_square", "cam_paths")]
+script = ExtResource("1_1wkv7")
+cam_square = NodePath("CamSquare")
+cam_paths = [NodePath("CamPaths/CamPath1/PathFollow2D"), NodePath("CamPaths/CamPath2/PathFollow2D"), NodePath("CamPaths/CamPath3/PathFollow2D")]
+
+[node name="OffsetTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="StateTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Corrners" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Corrners"]
+position = Vector2(52, 126)
+
+[node name="Marker2D2" type="Marker2D" parent="Corrners"]
+position = Vector2(348, 58)
+
+[node name="Marker2D3" type="Marker2D" parent="Corrners"]
+position = Vector2(404, 335)
+
+[node name="Marker2D4" type="Marker2D" parent="Corrners"]
+position = Vector2(23, 328)
+
+[node name="CamPaths" type="Node2D" parent="."]
+
+[node name="CamPath1" type="Path2D" parent="CamPaths"]
+position = Vector2(75, 79)
+curve = SubResource("Curve2D_36x2l")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath1"]
+position = Vector2(-13, 188)
+rotates = false
+script = ExtResource("2_7hmj0")
+speed = 50.0
+
+[node name="_Timer_36739" type="Timer" parent="CamPaths/CamPath1/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CamPath2" type="Path2D" parent="CamPaths"]
+position = Vector2(72, 76)
+curve = SubResource("Curve2D_lmjam")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath2"]
+position = Vector2(-9, 20)
+rotates = false
+script = ExtResource("2_7hmj0")
+speed = 50.0
+
+[node name="_Timer_36740" type="Timer" parent="CamPaths/CamPath2/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CamPath3" type="Path2D" parent="CamPaths"]
+position = Vector2(91, 64)
+curve = SubResource("Curve2D_wgho6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath3"]
+position = Vector2(99, 308)
+rotates = false
+script = ExtResource("2_7hmj0")
+speed = 50.0
+
+[node name="_Timer_36741" type="Timer" parent="CamPaths/CamPath3/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CamSquare" type="Area2D" parent="."]
+position = Vector2(311, 226)
+
+[node name="Sprite2D" type="Sprite2D" parent="CamSquare"]
+texture = ExtResource("3_6p1oi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamSquare"]
+shape = SubResource("RectangleShape2D_qvhpi")
+
+[connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
