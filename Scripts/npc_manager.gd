@@ -4,7 +4,7 @@ extends Node2D
 @onready var paths_node = $Paths
 @onready var timer = $NpcTimer
 
-const MAX_NPCS = 2 #must be less than number of paths
+@export var max_npcs = 4 #must be less than number of paths
 var npc_list: Array[Area2D]
 var paths_list: Array[NpcPath]
 var path_usage: Dictionary #maps PathFollow2D to a bool indicating if they're being walked
@@ -17,11 +17,10 @@ func _ready():
 	for p in paths_list:
 		path_usage[p] = false
 	print(paths_list)
-	initial_x_npcs(MAX_NPCS)
+	initial_x_npcs(max_npcs)
 	
 func initial_x_npcs(x: int):
 	for idx in x:
-		print("activating!")
 		activate_path(random_unused_path())
 
 #returns a random path that's not currently being used

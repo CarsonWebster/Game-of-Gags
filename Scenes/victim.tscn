@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dvb3olf4lg2tn"]
 
 [ext_resource type="Script" path="res://Scripts/victim.gd" id="1_gpr15"]
-[ext_resource type="Texture2D" uid="uid://cyk0dvokhqhg6" path="res://Assets/skyler/sklyer-stand.png" id="2_npnw7"]
+[ext_resource type="Texture2D" uid="uid://cyk0dvokhqhg6" path="res://Assets/skyler/skyler-stand.png" id="2_npnw7"]
 [ext_resource type="Texture2D" uid="uid://bj8kg2tqfjknf" path="res://Assets/skyler/skyler-pie-face-spritesheet.png" id="3_oufsu"]
 [ext_resource type="Texture2D" uid="uid://b167i3pmb8udu" path="res://Assets/skyler/skyler-shocked-spritesheet.png" id="4_bimuv"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=3 uid="uid://yx8ru4t7xdym"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_obtye"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
 [ext_resource type="PackedScene" uid="uid://cdqvs40i20m17" path="res://Scenes/pie_projectile.tscn" id="2_oqtrl"]
 [ext_resource type="PackedScene" uid="uid://dtcv83atmosyg" path="res://Scenes/banana_trap.tscn" id="3_i5fui"]
