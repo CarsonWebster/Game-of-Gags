@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnal8nekjndlv"]
+[gd_scene load_steps=4 format=3 uid="uid://bnal8nekjndlv"]
 
 [ext_resource type="Script" path="res://Scripts/base_collectable.gd" id="1_gmhpf"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="2_llcby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sul2u"]
 
@@ -8,6 +9,7 @@
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_gmhpf")
+collectable_resource = ExtResource("2_llcby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sul2u")

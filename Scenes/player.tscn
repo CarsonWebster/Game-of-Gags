@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://yx8ru4t7xdym"]
+[gd_scene load_steps=54 format=3 uid="uid://yx8ru4t7xdym"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_obtye"]
 [ext_resource type="Texture2D" uid="uid://bq4qkloff83gy" path="res://Assets/player/player-stand.png" id="2_7acw1"]
@@ -34,6 +34,10 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("3_vw2ce")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tvkn"]
+atlas = ExtResource("4_fnmqy")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kumqu"]
 atlas = ExtResource("4_fnmqy")
 region = Rect2(0, 0, 64, 64)
@@ -56,6 +60,10 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dos7"]
 atlas = ExtResource("2_7acw1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72w03"]
+atlas = ExtResource("9_mmtof")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rho5h"]
@@ -163,6 +171,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8tvkn")
+}],
+"loop": true,
+"name": &"Banana Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kumqu")
 }, {
 "duration": 1.0,
@@ -197,6 +213,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72w03")
+}],
+"loop": true,
+"name": &"Pie Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -295,45 +319,45 @@ script = ExtResource("1_obtye")
 pie_projectile = ExtResource("2_oqtrl")
 banana_trap = ExtResource("3_i5fui")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_fubbr")
-animation = &"Walk"
+animation = &"Banana Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_bkaov")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Player"]]
 position = Vector2(1, 8)
 shape = SubResource("CircleShape2D_uvvhg")
 
-[node name="PieSpawnPoint" type="Marker2D" parent="."]
+[node name="PieSpawnPoint" type="Marker2D" parent="." groups=["Player"]]
 position = Vector2(10, 0)
 
-[node name="BananaSpawnPoint" type="Marker2D" parent="."]
+[node name="BananaSpawnPoint" type="Marker2D" parent="." groups=["Player"]]
 position = Vector2(0, 13)
 
-[node name="Zap" type="AudioStreamPlayer2D" parent="."]
+[node name="Zap" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
 stream = ExtResource("13_uspcq")
 volume_db = 10.015
 
-[node name="BananaWalk" type="AudioStreamPlayer" parent="."]
+[node name="BananaWalk" type="AudioStreamPlayer" parent="." groups=["Player"]]
 stream = ExtResource("14_c5adh")
 volume_db = 3.0
 
-[node name="Walk" type="AudioStreamPlayer" parent="."]
+[node name="Walk" type="AudioStreamPlayer" parent="." groups=["Player"]]
 stream = ExtResource("15_lxcy7")
 volume_db = 10.0
 
-[node name="BananaDrop" type="AudioStreamPlayer" parent="."]
+[node name="BananaDrop" type="AudioStreamPlayer" parent="." groups=["Player"]]
 stream = ExtResource("16_pjw0b")
 volume_db = 20.0
 
-[node name="PieThrow" type="AudioStreamPlayer" parent="."]
+[node name="PieThrow" type="AudioStreamPlayer" parent="." groups=["Player"]]
 stream = ExtResource("17_73cdr")
 volume_db = 24.0
 

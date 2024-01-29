@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckqphw7kipiou"]
+
+[ext_resource type="Texture2D" uid="uid://dy6chmjae825g" path="res://Assets/Enviroment/pie-lady-dropoff-animation.png" id="1_5g61h"]
+[ext_resource type="Script" path="res://Scripts/grandma.gd" id="1_u324e"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="2_1u6fe"]
+[ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="3_bxdj2"]
+[ext_resource type="AudioStream" uid="uid://bf5povy8xxjdt" path="res://Assets/Audio/folly work sfx/Oven ding sfx.wav" id="3_lk3xm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d30ge"]
+atlas = ExtResource("1_5g61h")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jadhm"]
+atlas = ExtResource("1_5g61h")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3417"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d30ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jadhm")
+}],
+"loop": false,
+"name": &"Grandma",
+"speed": 5.0
+}]
+
+[node name="Grandma" type="Node2D"]
+script = ExtResource("1_u324e")
+pie_collectable = ExtResource("2_1u6fe")
+pieres = ExtResource("3_bxdj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l3417")
+animation = &"Grandma"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Oven" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lk3xm")
+volume_db = 10.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
