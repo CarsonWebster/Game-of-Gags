@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnv8at0u5o7v"
+path="res://.godot/imported/throw sfx.ogg-6c4a33060ec659bc75ea5e0a430dbf2b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/folly work sfx/throw sfx.ogg"
+dest_files=["res://.godot/imported/throw sfx.ogg-6c4a33060ec659bc75ea5e0a430dbf2b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

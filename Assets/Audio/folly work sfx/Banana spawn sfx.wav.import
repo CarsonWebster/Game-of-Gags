@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwneq7rvnmn20"
+path="res://.godot/imported/Banana spawn sfx.wav-d8ece8a2caf699483a4e3bd2102b411c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/folly work sfx/Banana spawn sfx.wav"
+dest_files=["res://.godot/imported/Banana spawn sfx.wav-d8ece8a2caf699483a4e3bd2102b411c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

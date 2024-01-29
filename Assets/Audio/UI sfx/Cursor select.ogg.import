@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://lbu6fkua6bg1"
+path="res://.godot/imported/Cursor select.ogg-c383fd66fd62958812bd2e7cdbadfbff.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/UI sfx/Cursor select.ogg"
+dest_files=["res://.godot/imported/Cursor select.ogg-c383fd66fd62958812bd2e7cdbadfbff.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

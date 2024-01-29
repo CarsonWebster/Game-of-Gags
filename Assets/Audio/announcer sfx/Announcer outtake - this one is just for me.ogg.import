@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdvrda00n3r7a"
+path="res://.godot/imported/Announcer outtake - this one is just for me.ogg-24865a0483ea6032c292f116bd883c27.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer outtake - this one is just for me.ogg"
+dest_files=["res://.godot/imported/Announcer outtake - this one is just for me.ogg-24865a0483ea6032c292f116bd883c27.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

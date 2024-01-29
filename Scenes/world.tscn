@@ -1,20 +1,77 @@
 [gd_scene load_steps=16 format=3 uid="uid://crir22q4u68vv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_qxqoa"]
-[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/Player.tscn" id="1_xncld"]
+[ext_resource type="PackedScene" uid="uid://yx8ru4t7xdym" path="res://Scenes/player.tscn" id="1_xncld"]
 [ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="2_mgf81"]
+[ext_resource type="Texture2D" uid="uid://d0hgq53k0xpk5" path="res://Assets/objects/fountain-spritesheet.png" id="3_koylf"]
+[ext_resource type="Texture2D" uid="uid://bgeymvho7bsom" path="res://Assets/objects/bench.png" id="4_irr1l"]
 [ext_resource type="Script" path="res://Scripts/VictimSpawner.gd" id="5_jkvxr"]
+[ext_resource type="PackedScene" uid="uid://bg3bohsro6lbs" path="res://Scenes/trashcan.tscn" id="5_ouvu0"]
 [ext_resource type="PackedScene" uid="uid://dvb3olf4lg2tn" path="res://Scenes/victim.tscn" id="6_3uc5o"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
-[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="9_h3ay0"]
+[ext_resource type="Script" path="res://Scripts/MovingCamera.gd" id="7_al342"]
+[ext_resource type="Texture2D" uid="uid://ces4q01pcjd34" path="res://Assets/Enviroment/frame.png" id="7_m01t3"]
+[ext_resource type="Script" path="res://Scripts/ConstantFollow.gd" id="7_xyc5e"]
+[ext_resource type="PackedScene" uid="uid://b1mmlpyqvrekr" path="res://Scenes/pause_menu.tscn" id="8_t6m8a"]
+[ext_resource type="PackedScene" uid="uid://47n6gpt83kqu" path="res://Scenes/hud.tscn" id="9_h3ay0"]
 [ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="10_r40jk"]
-[ext_resource type="PackedScene" path="res://Scenes/player_stat_handler.tscn" id="11_7wet5"]
+[ext_resource type="PackedScene" uid="uid://cyc4hedeuv0r4" path="res://Scenes/player_stat_handler.tscn" id="11_7wet5"]
 [ext_resource type="Script" path="res://Scripts/collectable_manager.gd" id="11_tre3e"]
-[ext_resource type="PackedScene" path="res://Scenes/base_collectable.tscn" id="12_gwpac"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="12_gwpac"]
 [ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="13_5kq1h"]
 [ext_resource type="Resource" uid="uid://5wjdm2scraa5" path="res://Scenes/Resources/Pie.tres" id="14_ibhk1"]
 [ext_resource type="PackedScene" uid="uid://bhsfhj5dd74di" path="res://Scenes/moving_camera.tscn" id="15_2p6cs"]
 [ext_resource type="PackedScene" uid="uid://ds3l4cta60sk3" path="res://Scenes/npcs.tscn" id="17_iq22f"]
+[ext_resource type="AudioStream" uid="uid://cyt43jqr12nou" path="res://Assets/Audio/UI sfx/Good sound.ogg" id="21_655ij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rjya"]
+atlas = ExtResource("3_koylf")
+region = Rect2(0, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkwtn"]
+atlas = ExtResource("3_koylf")
+region = Rect2(159, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf7in"]
+atlas = ExtResource("3_koylf")
+region = Rect2(318, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23vap"]
+atlas = ExtResource("3_koylf")
+region = Rect2(477, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q520q"]
+atlas = ExtResource("3_koylf")
+region = Rect2(636, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xprus"]
+atlas = ExtResource("3_koylf")
+region = Rect2(795, 0, 159, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ml8gm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rjya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkwtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf7in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23vap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q520q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xprus")
+}],
+"loop": true,
+"name": &"Fountain",
+"speed": 5.0
+}]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qxqoa")
@@ -22,9 +79,41 @@ metadata/_edit_lock_ = true
 
 [node name="Enviroment" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Enviroment"]
+[node name="Background" type="Sprite2D" parent="Enviroment"]
 position = Vector2(321, 240)
 texture = ExtResource("2_mgf81")
+metadata/_edit_lock_ = true
+
+[node name="Fountain" type="AnimatedSprite2D" parent="Enviroment"]
+position = Vector2(313, 428)
+sprite_frames = SubResource("SpriteFrames_ml8gm")
+animation = &"Fountain"
+metadata/_edit_lock_ = true
+
+[node name="Bench" type="Sprite2D" parent="Enviroment"]
+position = Vector2(125, 391)
+texture = ExtResource("4_irr1l")
+metadata/_edit_lock_ = true
+
+[node name="Bench4" type="Sprite2D" parent="Enviroment"]
+position = Vector2(72, 418)
+texture = ExtResource("4_irr1l")
+metadata/_edit_lock_ = true
+
+[node name="Bench2" type="Sprite2D" parent="Enviroment"]
+position = Vector2(529, 391)
+texture = ExtResource("4_irr1l")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Bench3" type="Sprite2D" parent="Enviroment"]
+position = Vector2(585, 419)
+texture = ExtResource("4_irr1l")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Trashcan" parent="Enviroment" instance=ExtResource("5_ouvu0")]
+position = Vector2(71, 323)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(321, 240)
@@ -99,6 +188,9 @@ collectable_resource = ExtResource("13_5kq1h")
 [node name="Npcs" parent="." instance=ExtResource("17_iq22f")]
 
 [node name="MovingCamera" parent="." instance=ExtResource("15_2p6cs")]
+
+[node name="StartGameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_655ij")
 
 [connection signal="timeout" from="VictimSpawner/Timer" to="VictimSpawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

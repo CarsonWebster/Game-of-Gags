@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w2wbm4hhcpib"
+path="res://.godot/imported/Splat 2 sfx.wav-a96d787aab4b554022d867497dafee32.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/folly work sfx/Splat 2 sfx.wav"
+dest_files=["res://.godot/imported/Splat 2 sfx.wav-a96d787aab4b554022d867497dafee32.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

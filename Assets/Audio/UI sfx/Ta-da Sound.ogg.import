@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rgun4qsqg6jr"
+path="res://.godot/imported/Ta-da Sound.ogg-0f56297c73090bad2f5147610943cd4e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/UI sfx/Ta-da Sound.ogg"
+dest_files=["res://.godot/imported/Ta-da Sound.ogg-0f56297c73090bad2f5147610943cd4e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

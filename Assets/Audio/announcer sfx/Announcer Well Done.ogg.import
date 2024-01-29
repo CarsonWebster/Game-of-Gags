@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dg85ttyfvmkir"
+path="res://.godot/imported/Announcer Well Done.ogg-21611f191058e0e8a9fb22c38f5bb76c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/announcer sfx/Announcer Well Done.ogg"
+dest_files=["res://.godot/imported/Announcer Well Done.ogg-21611f191058e0e8a9fb22c38f5bb76c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wffjtjsdrpfr"
+path="res://.godot/imported/Bad Sound.ogg-88ee40cb4a5c6e273ab124249b21cdad.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/UI sfx/Bad Sound.ogg"
+dest_files=["res://.godot/imported/Bad Sound.ogg-88ee40cb4a5c6e273ab124249b21cdad.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

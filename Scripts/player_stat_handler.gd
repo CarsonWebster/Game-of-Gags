@@ -1,9 +1,9 @@
 class_name PlayerStatHandler
 extends Node2D
 
-var current_bananas: int = 0
-var current_pies: int = 0
-var current_shocks: int = 0
+var current_bananas: int = 10
+var current_pies: int = 10
+var current_shocks: int = 10
 
 func _ready():
 	CollectableSignalBus.banana_collected.connect(on_banana_collected)
