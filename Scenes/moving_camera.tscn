@@ -73,7 +73,6 @@ curve = SubResource("Curve2D_lmjam")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath2"]
 position = Vector2(37, 69)
-
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
@@ -88,7 +87,6 @@ curve = SubResource("Curve2D_wgho6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath3"]
 position = Vector2(98, 325)
-
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0

@@ -13,7 +13,7 @@ func set_direction(v: Vector2):
 
 func _on_area_entered(area):
 	if area.is_in_group("camera"):
-		print("NPC IN CAMERA")
+		#print("NPC IN CAMERA")
 		is_in_camera = true
 	elif area.is_in_group("banana"):
 		print("BANANA")
@@ -33,7 +33,7 @@ func _on_area_entered(area):
 
 func _on_area_exited(area):
 	if area.is_in_group("camera"):
-		print("NPC EXITED CAMERA")
+		#print("NPC EXITED CAMERA")
 		is_in_camera = false
 
 func add_score():
