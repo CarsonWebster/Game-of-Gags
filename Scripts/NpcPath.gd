@@ -30,5 +30,6 @@ func set_in_use(b: bool):
 	#	walker.add_to_group("active_npcs")
 	
 func reset():
+	in_use = false
 	progress_ratio = 0.0
 	walker.remove_from_group("active_npcs")

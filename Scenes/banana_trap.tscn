@@ -5,12 +5,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pv1by"]
 radius = 9.0
 
-[node name="BananaTrap" type="Node2D"]
+[node name="BananaTrap" type="Node2D" groups=["banana"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["banana"]]
 texture = ExtResource("1_atri0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["banana"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["banana"]]
 shape = SubResource("CircleShape2D_pv1by")

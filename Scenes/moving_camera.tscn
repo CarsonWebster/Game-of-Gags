@@ -25,19 +25,19 @@ point_count = 4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhpi"]
 size = Vector2(151, 111)
 
-[node name="MovingCamera" type="Node2D" node_paths=PackedStringArray("cam_square", "cam_paths")]
+[node name="MovingCamera" type="Node2D" node_paths=PackedStringArray("cam_square", "cam_paths") groups=["camera"]]
 script = ExtResource("1_1wkv7")
 cam_square = NodePath("CamSquare")
 cam_paths = [NodePath("CamPaths/CamPath1/PathFollow2D"), NodePath("CamPaths/CamPath2/PathFollow2D"), NodePath("CamPaths/CamPath3/PathFollow2D")]
 
-[node name="OffsetTimer" type="Timer" parent="."]
+[node name="OffsetTimer" type="Timer" parent="." groups=["camera"]]
 wait_time = 0.5
 autostart = true
 
-[node name="StateTimer" type="Timer" parent="."]
+[node name="StateTimer" type="Timer" parent="." groups=["camera"]]
 autostart = true
 
-[node name="Corrners" type="Node2D" parent="."]
+[node name="Corrners" type="Node2D" parent="." groups=["camera"]]
 
 [node name="Marker2D" type="Marker2D" parent="Corrners"]
 position = Vector2(358, 238)
@@ -51,9 +51,9 @@ position = Vector2(415, 345)
 [node name="Marker2D4" type="Marker2D" parent="Corrners"]
 position = Vector2(174, 345)
 
-[node name="CamPaths" type="Node2D" parent="."]
+[node name="CamPaths" type="Node2D" parent="." groups=["camera"]]
 
-[node name="CamPath1" type="Path2D" parent="CamPaths"]
+[node name="CamPath1" type="Path2D" parent="CamPaths" groups=["camera"]]
 position = Vector2(75, 79)
 curve = SubResource("Curve2D_36x2l")
 
@@ -63,45 +63,47 @@ rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
 
-[node name="_Timer_36739" type="Timer" parent="CamPaths/CamPath1/PathFollow2D"]
+[node name="_Timer_36739" type="Timer" parent="CamPaths/CamPath1/PathFollow2D" groups=["camera"]]
 wait_time = 0.2
 one_shot = true
 
-[node name="CamPath2" type="Path2D" parent="CamPaths"]
+[node name="CamPath2" type="Path2D" parent="CamPaths" groups=["camera"]]
 position = Vector2(72, 76)
 curve = SubResource("Curve2D_lmjam")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath2"]
 position = Vector2(37, 69)
+
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
 
-[node name="_Timer_36740" type="Timer" parent="CamPaths/CamPath2/PathFollow2D"]
+[node name="_Timer_36740" type="Timer" parent="CamPaths/CamPath2/PathFollow2D" groups=["camera"]]
 wait_time = 0.2
 one_shot = true
 
-[node name="CamPath3" type="Path2D" parent="CamPaths"]
+[node name="CamPath3" type="Path2D" parent="CamPaths" groups=["camera"]]
 position = Vector2(91, 64)
 curve = SubResource("Curve2D_wgho6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath3"]
 position = Vector2(98, 325)
+
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
 
-[node name="_Timer_36741" type="Timer" parent="CamPaths/CamPath3/PathFollow2D"]
+[node name="_Timer_36741" type="Timer" parent="CamPaths/CamPath3/PathFollow2D" groups=["camera"]]
 wait_time = 0.2
 one_shot = true
 
-[node name="CamSquare" type="Area2D" parent="."]
+[node name="CamSquare" type="Area2D" parent="." groups=["camera"]]
 position = Vector2(311, 226)
 
-[node name="Sprite2D" type="Sprite2D" parent="CamSquare"]
+[node name="Sprite2D" type="Sprite2D" parent="CamSquare" groups=["camera"]]
 texture = ExtResource("3_6p1oi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CamSquare"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamSquare" groups=["camera"]]
 shape = SubResource("RectangleShape2D_qvhpi")
 
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

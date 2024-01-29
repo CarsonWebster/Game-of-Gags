@@ -5,6 +5,8 @@ extends Control
 @onready var bananas_label: Label = $HBoxContainer/BananasLabel
 @onready var shocks_label: Label = $HBoxContainer/ShocksLabel
 
+var score: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	CollectableSignalBus.on_update_banana.connect(update_banana)
@@ -15,11 +17,16 @@ func _ready():
 func _process(_delta):
 	pass
 
+func add_score(new_points: int):
+	score += new_points
+	score_label.text = score_format % score
+	update_score(score)
+
 var time_format = "Time Left: %d"
 func update_game_timer(time_remaining: float):
 	time_label.text = time_format % time_remaining
 
-var score_format = "Time Left: %d"
+var score_format = "Score: %d"
 func update_score(score: float):
 	score_label.text = score_format % score
 
