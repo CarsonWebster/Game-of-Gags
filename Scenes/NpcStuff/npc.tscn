@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6aeg2h5mgx7h"]
+[gd_scene load_steps=10 format=3 uid="uid://b6aeg2h5mgx7h"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_aoura"]
 [ext_resource type="Texture2D" uid="uid://dh5pcrm24xosy" path="res://Assets/morgan/morgan-walk-spritesheet.png" id="2_evaa8"]
+[ext_resource type="Texture2D" uid="uid://bve3clj5me6o6" path="res://Assets/skyler/skyler-walk-spritesheet.png" id="3_bfkhi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7se3"]
 atlas = ExtResource("2_evaa8")
@@ -9,6 +10,14 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk3tu"]
 atlas = ExtResource("2_evaa8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwxd0"]
+atlas = ExtResource("3_bfkhi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdwwc"]
+atlas = ExtResource("3_bfkhi")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iyuh5"]
@@ -22,6 +31,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"morgan_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwxd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdwwc")
+}],
+"loop": true,
+"name": &"skylar_walk",
 "speed": 5.0
 }]
 

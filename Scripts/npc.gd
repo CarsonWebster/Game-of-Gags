@@ -41,4 +41,7 @@ func add_score():
 	if is_in_camera:
 		points = 5
 	hud.add_score(points)
-
+	
+func play_random_anim():
+	var str = ["skylar_walk", "morgan_walk"].pick_random()
+	get_child(0).play(str)
