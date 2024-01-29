@@ -25,6 +25,7 @@ func _physics_process(delta):
 func set_in_use(b: bool):
 	in_use = b
 	walker.add_to_group("active_npcs")
+	walker.play_random_anim()
 	#if progress == 0.0 && in_use:
 	#	walker.add_to_group("active_npcs")
 	

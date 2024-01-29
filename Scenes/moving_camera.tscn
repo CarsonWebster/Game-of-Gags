@@ -6,19 +6,19 @@
 
 [sub_resource type="Curve2D" id="Curve2D_36x2l"]
 _data = {
-"points": PackedVector2Array(-2.10826, 85.4344, 2.10826, -85.4344, -13, 188, -54.1905, 0.243172, 54.1905, -0.243172, 124, 33, -109.759, 3.35143, 109.759, -3.35143, 370, 317, 3.5946, 55.3797, -3.5946, -55.3797, 488, 155, 90.9197, -1.18921, -90.9197, 1.18921, 366, 24, 56.434, -8.54064, -56.434, 8.54064, 126, 326, -0.567621, 61.4344, 0.567621, -61.4344, -13, 190)
+"points": PackedVector2Array(-2.10826, 85.4344, 2.10826, -85.4344, 40, 194, -54.1905, 0.243172, 54.1905, -0.243172, 127, 111, -68.759, 12.3514, 68.759, -12.3514, 350, 255, -4.4054, 34.3797, 4.4054, -34.3797, 457, 203, 90.9197, -1.18921, -90.9197, 1.18921, 349, 86, 56.434, -8.54064, -56.434, 8.54064, 146, 255, -0.567621, 61.4344, 0.567621, -61.4344, 39, 204)
 }
 point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_lmjam"]
 _data = {
-"points": PackedVector2Array(-40.5866, 20.7652, 40.5866, -20.7652, -9, 20, -25.4846, -32.0917, 25.4846, 32.0917, 496, 12, 36.8111, -8.49487, -36.8111, 8.49487, 492, 333, 37.755, 28.3162, -37.755, -28.3162, -7, 336, -27.3724, -4.71937, 27.3724, 4.71937, -8, 19)
+"points": PackedVector2Array(-40.5866, 20.7652, 40.5866, -20.7652, 37, 69, -25.4846, -32.0917, 25.4846, 32.0917, 454, 78, 36.8111, -8.49487, -36.8111, 8.49487, 452, 276, 37.755, 28.3162, -37.755, -28.3162, 39, 276, -27.3724, -4.71937, 27.3724, 4.71937, 40, 71)
 }
 point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_wgho6"]
 _data = {
-"points": PackedVector2Array(17.9336, 60.408, -17.9336, -60.408, 99, 308, -44.3621, -0.943874, 44.3621, 0.943874, 212, 25, 32.0917, -60.408, -32.0917, 60.408, 345, 281, 13.2142, 46.2498, -13.2142, -46.2498, 101, 310)
+"points": PackedVector2Array(17.9336, 60.408, -17.9336, -60.408, 98, 325, -44.3621, -0.943874, 44.3621, 0.943874, 217, 231, 32.0917, -60.408, -32.0917, 60.408, 341, 320, 13.2142, 46.2498, -13.2142, -46.2498, 101, 326)
 }
 point_count = 4
 
@@ -40,16 +40,16 @@ autostart = true
 [node name="Corrners" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Corrners"]
-position = Vector2(52, 126)
+position = Vector2(358, 238)
 
 [node name="Marker2D2" type="Marker2D" parent="Corrners"]
-position = Vector2(348, 58)
+position = Vector2(152, 137)
 
 [node name="Marker2D3" type="Marker2D" parent="Corrners"]
-position = Vector2(404, 335)
+position = Vector2(415, 345)
 
 [node name="Marker2D4" type="Marker2D" parent="Corrners"]
-position = Vector2(23, 328)
+position = Vector2(174, 345)
 
 [node name="CamPaths" type="Node2D" parent="."]
 
@@ -58,7 +58,7 @@ position = Vector2(75, 79)
 curve = SubResource("Curve2D_36x2l")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath1"]
-position = Vector2(-13, 188)
+position = Vector2(40, 194)
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
@@ -72,7 +72,7 @@ position = Vector2(72, 76)
 curve = SubResource("Curve2D_lmjam")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath2"]
-position = Vector2(-9, 20)
+position = Vector2(37, 69)
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
@@ -86,7 +86,7 @@ position = Vector2(91, 64)
 curve = SubResource("Curve2D_wgho6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CamPaths/CamPath3"]
-position = Vector2(99, 308)
+position = Vector2(98, 325)
 rotates = false
 script = ExtResource("2_7hmj0")
 speed = 50.0
