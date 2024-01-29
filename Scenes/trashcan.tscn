@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg3bohsro6lbs"]
+[gd_scene load_steps=15 format=3 uid="uid://bg3bohsro6lbs"]
 
+[ext_resource type="Script" path="res://Scripts/trashcan.gd" id="1_cjshs"]
 [ext_resource type="Texture2D" uid="uid://cxfxf8nxad5q" path="res://Assets/objects/trash-can.png" id="1_wrerg"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="2_na64x"]
 [ext_resource type="Texture2D" uid="uid://cnkfag3ty7mit" path="res://Assets/objects/trash-can-spawn-banana-spritesheet.png" id="2_oqqul"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="3_840f7"]
 [ext_resource type="AudioStream" uid="uid://cwneq7rvnmn20" path="res://Assets/Audio/folly work sfx/Banana spawn sfx.wav" id="3_brfy3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t44o"]
@@ -54,16 +57,34 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_luk1d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Spawn",
 "speed": 5.0
 }]
 
-[node name="Trashcan" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg45x"]
+radius = 8.0
+
+[node name="Trashcan" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
+script = ExtResource("1_cjshs")
+banana_collectable = ExtResource("2_na64x")
+bananares = ExtResource("3_840f7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_20qrl")
 animation = &"Spawn"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_brfy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_vg45x")
+
+[node name="BananaTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="BananaTimer" to="." method="_on_banana_timer_timeout"]

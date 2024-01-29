@@ -22,8 +22,10 @@ enum PlayerState {
 	BANANA_WALK,
 	BANANA,
 	SHOCK,
+	BANANA_IDLE,
+	PIE_IDLE,
 }
-var MoveableStates: Array[PlayerState] = [PlayerState.IDLE, PlayerState.WALK, PlayerState.BANANA_WALK, PlayerState.PIE_WALK]
+var MoveableStates: Array[PlayerState] = [PlayerState.IDLE, PlayerState.WALK, PlayerState.BANANA_WALK, PlayerState.PIE_WALK,PlayerState.PIE_IDLE, PlayerState.BANANA_IDLE]
 var NonMoveableStates: Array[PlayerState] = [PlayerState.PIE, PlayerState.BANANA, PlayerState.SHOCK]
 
 var current_state: PlayerState
@@ -73,7 +75,13 @@ func _physics_process(_delta):
 	if current_state in MoveableStates:
 		if velocity.is_zero_approx():
 			#print("IDLING")
-			set_state(PlayerState.IDLE)
+			match current_state:
+				PlayerState.BANANA_WALK:
+					set_state(PlayerState.BANANA_IDLE)
+				PlayerState.PIE_WALK:
+					set_state(PlayerState.PIE_IDLE)
+				_:
+					set_state(PlayerState.IDLE)
 		elif current_state == PlayerState.IDLE:
 			set_state(PlayerState.WALK)
 
@@ -105,10 +113,14 @@ func _physics_process(_delta):
 			animated_sprite.play("Handshake Miss")
 			if not $Zap.playing:
 				$Zap.play()
+		PlayerState.PIE_IDLE:
+			animated_sprite.play("Pie Idle")
+		PlayerState.BANANA_IDLE:
+			animated_sprite.play("Banana Idle")
 
 	# Move and adjust postion
 	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position = position.clamp(Vector2(0, 100), screen_size)
 
 
 # Ugly animation state machine right here

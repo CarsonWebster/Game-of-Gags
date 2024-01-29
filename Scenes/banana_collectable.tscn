@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://tl48fdt41vxu"]
+
+[ext_resource type="Texture2D" uid="uid://bgeyk0pp2ox1m" path="res://Assets/objects/banana-peel.png" id="1_awfe0"]
+[ext_resource type="Script" path="res://Scripts/banana_collectable.gd" id="1_tttt3"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="2_0c1lb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_so6v7"]
+
+[node name="banana_collectable" type="Node2D"]
+script = ExtResource("1_tttt3")
+bananares = ExtResource("2_0c1lb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_awfe0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_so6v7")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
