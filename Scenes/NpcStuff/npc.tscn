@@ -28,14 +28,17 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scyvy"]
 height = 22.0
 
-[node name="Npc" type="Area2D"]
+[node name="Npc" type="Area2D" groups=["npc"]]
 script = ExtResource("1_aoura")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["npc"]]
 sprite_frames = SubResource("SpriteFrames_iyuh5")
 animation = &"morgan_walk"
 autoplay = "morgan_walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["npc"]]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_scyvy")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

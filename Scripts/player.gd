@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var pie_projectile: PackedScene
 @export var banana_trap: PackedScene
 
+var in_camera: bool = false
+
 var screen_size
 
 # Player Action States
@@ -156,3 +158,4 @@ func drop_banana():
 		banana.position = $BananaSpawnPoint.global_position
 		if not $BananaDrop.playing:
 			$BananaDrop.play()
+
