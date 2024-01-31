@@ -16,7 +16,7 @@ func _ready():
 
 
 func _on_timer_timeout():
-	print("Grandma time")
+	#print("Grandma time")
 	sprite.play("Grandma")
 	sprite.show()
 	$Oven.play()

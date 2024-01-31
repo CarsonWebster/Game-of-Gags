@@ -16,18 +16,19 @@ func _on_area_entered(area):
 		#print("NPC IN CAMERA")
 		is_in_camera = true
 	elif area.is_in_group("banana"):
-		print("BANANA")
-		await $AnimatedSprite2D.play("")
+		#print("BANANA")
+		#await $AnimatedSprite2D.play("")
 		get_parent().reset()
 		add_score()
 	elif area.is_in_group("pie"):
-		print("PIED")
+		#print("PIED")
 		get_parent().reset()
 	elif area.is_in_group("npc"):
 		#print("npc collision")
-		return
+		pass
 	elif area.is_in_group("Player"):
-		print("PLAYER")
+		#print("PLAYER")
+		pass
 	else:
 		print("None: ", area.get_groups())
 

@@ -20,7 +20,7 @@ func _physics_process(delta):
 	progress += pixel_speed * delta
 	if progress_ratio >= 1:
 		reset()
-		print("we finished walk")
+		#print("we finished walk")
 		finished_walk.emit($".")
 
 func set_in_use(b: bool):

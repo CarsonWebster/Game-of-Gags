@@ -50,7 +50,7 @@ func choose_next_state():
 	else:
 		current_state = [State.GO_TO_POSITION, State.GO_TO_PATH, State.GO_TO_NPC].pick_random()
 		choose_new_target()
-	print("new state: ", current_state)
+	#print("new state: ", current_state)
 
 func choose_new_target():
 	if current_state == State.GO_TO_NPC:

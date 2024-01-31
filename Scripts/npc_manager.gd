@@ -16,7 +16,7 @@ func _ready():
 			paths_list.append(child.get_child(0))
 	for p in paths_list:
 		path_usage[p] = false
-	print(paths_list)
+	#print(paths_list)
 	initial_x_npcs(max_npcs)
 	
 func initial_x_npcs(x: int):
@@ -32,7 +32,7 @@ func random_unused_path() -> NpcPath:
 	return unused_paths.pick_random()
 
 func activate_path(npc_path):
-	print("activating new path")
+	#print("activating new path")
 	path_usage[npc_path] = true
 	npc_path.set_in_use(true)
 
