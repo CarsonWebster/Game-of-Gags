@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dypoammlus3ds"]
+
+[ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="1_njqq8"]
+[ext_resource type="Texture2D" uid="uid://d0hgq53k0xpk5" path="res://Assets/objects/fountain-spritesheet.png" id="2_knet6"]
+[ext_resource type="PackedScene" uid="uid://cv8kua02swof6" path="res://Scenes/Entities/Player/player.tscn" id="3_m221j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hf1d"]
+atlas = ExtResource("2_knet6")
+region = Rect2(0, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krkee"]
+atlas = ExtResource("2_knet6")
+region = Rect2(159, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwmtq"]
+atlas = ExtResource("2_knet6")
+region = Rect2(318, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lrrn"]
+atlas = ExtResource("2_knet6")
+region = Rect2(477, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxu5f"]
+atlas = ExtResource("2_knet6")
+region = Rect2(636, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bni33"]
+atlas = ExtResource("2_knet6")
+region = Rect2(795, 0, 159, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qymrm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hf1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krkee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwmtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lrrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxu5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bni33")
+}],
+"loop": true,
+"name": &"Fountain",
+"speed": 5.0
+}]
+
+[node name="CityLevel" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_njqq8")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Enviroment" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Fountain" type="AnimatedSprite2D" parent="Enviroment"]
+y_sort_enabled = true
+position = Vector2(320, 422)
+sprite_frames = SubResource("SpriteFrames_qymrm")
+animation = &"Fountain"
+autoplay = "Fountain"
+
+[node name="Entities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Entities" instance=ExtResource("3_m221j")]
+position = Vector2(290, 317)

@@ -361,4 +361,11 @@ volume_db = 20.0
 stream = ExtResource("17_73cdr")
 volume_db = 24.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+limit_smoothed = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

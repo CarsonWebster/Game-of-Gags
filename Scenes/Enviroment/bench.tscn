@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://tvpfl1pf3wer"]
+
+[ext_resource type="Texture2D" uid="uid://bgeymvho7bsom" path="res://Assets/objects/bench.png" id="1_hfvpq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ur44j"]
+radius = 7.75
+height = 47.5
+
+[node name="Bench" type="RigidBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -18)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hfvpq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+rotation = 1.08708
+scale = Vector2(0.791587, 0.933458)
+shape = SubResource("CapsuleShape2D_ur44j")

@@ -34,7 +34,6 @@ var current_state: PlayerState
 func set_state(new_state: PlayerState):
 	if current_state != new_state:
 		current_state = new_state
-		#print(current_state)
 
 func _ready():
 	screen_size = get_viewport_rect().size

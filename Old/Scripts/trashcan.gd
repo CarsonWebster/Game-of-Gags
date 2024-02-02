@@ -9,7 +9,7 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	banana_timer.wait_time = randi_range(5, 20)
+	banana_timer.wait_time = randi_range(10, 30)
 
 
 func _on_animated_sprite_2d_animation_finished():

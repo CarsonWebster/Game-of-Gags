@@ -1,9 +1,9 @@
 extends Control
 
-@onready var time_label: Label = $HBoxContainer/TimeLabel
-@onready var score_label: Label = $HBoxContainer/ScoreLabel
-@onready var bananas_label: Label = $HBoxContainer/BananasLabel
-@onready var shocks_label: Label = $HBoxContainer/ShocksLabel
+@onready var time_label: Label = %TimeLabel
+@onready var score_label: Label = %ScoreLabel
+@onready var bananas_label: Label = %BananasLabel
+@onready var shocks_label: Label = %ShocksLabel
 
 var score: int = 0
 
