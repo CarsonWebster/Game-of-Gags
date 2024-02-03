@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cv8kua02swof6"]
+[gd_scene load_steps=55 format=3 uid="uid://cv8kua02swof6"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Player/player.gd" id="1_7mb4g"]
 [ext_resource type="Texture2D" uid="uid://dsuuvuciiakhc" path="res://Assets/player/player-banana-walk-spritesheet.png" id="1_h5edh"]
@@ -13,6 +13,12 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Player/state_machine.gd" id="11_i3x5o"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/idle.gd" id="12_4wtjd"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/walk.gd" id="13_qlqbv"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/banana_walk.gd" id="14_gvr6r"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/banana_drop.gd" id="15_10g5m"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/pie_walk.gd" id="16_j4bii"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/pie_throw.gd" id="17_xdod2"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/shock.gd" id="18_0wfh6"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/shock_miss.gd" id="19_k3jhv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3foti"]
 atlas = ExtResource("1_xjhdd")
@@ -172,7 +178,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0usdr")
 }],
-"loop": false,
+"loop": true,
 "name": &"Banana Walk",
 "speed": 5.0
 }, {
@@ -180,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_58uf2")
 }],
-"loop": false,
+"loop": true,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -205,7 +211,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4rrfi")
 }],
-"loop": false,
+"loop": true,
 "name": &"Pie Walk",
 "speed": 5.0
 }, {
@@ -235,7 +241,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gmha4")
 }],
-"loop": false,
+"loop": true,
 "name": &"Sprint",
 "speed": 10.0
 }, {
@@ -306,7 +312,7 @@ script = ExtResource("1_7mb4g")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_pwq4b")
-animation = &"Walk"
+animation = &"Shock Miss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
@@ -322,6 +328,7 @@ limit_bottom = 480
 limit_smoothed = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
 script = ExtResource("11_i3x5o")
 initial_state = NodePath("Idle")
 
@@ -334,15 +341,26 @@ script = ExtResource("13_qlqbv")
 [node name="Sprint" type="Node" parent="StateMachine"]
 
 [node name="BananaWalk" type="Node" parent="StateMachine"]
-
-[node name="PieWalk" type="Node" parent="StateMachine"]
-
-[node name="PieThrow" type="Node" parent="StateMachine"]
+script = ExtResource("14_gvr6r")
 
 [node name="BananaDrop" type="Node" parent="StateMachine"]
+script = ExtResource("15_10g5m")
+
+[node name="PieWalk" type="Node" parent="StateMachine"]
+script = ExtResource("16_j4bii")
+
+[node name="PieThrow" type="Node" parent="StateMachine"]
+script = ExtResource("17_xdod2")
 
 [node name="Shock" type="Node" parent="StateMachine"]
+script = ExtResource("18_0wfh6")
 
 [node name="ShockMiss" type="Node" parent="StateMachine"]
+script = ExtResource("19_k3jhv")
 
 [node name="Victory" type="Node" parent="StateMachine"]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/PieThrow" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/BananaDrop" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Shock" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ShockMiss" method="_on_animated_sprite_2d_animation_finished"]
