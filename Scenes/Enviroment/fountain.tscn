@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnl1ur3t8yqat"]
+
+[ext_resource type="Texture2D" uid="uid://d0hgq53k0xpk5" path="res://Assets/objects/fountain-spritesheet.png" id="1_vmicq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hf1d"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(0, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krkee"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(159, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwmtq"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(318, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lrrn"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(477, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxu5f"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(636, 0, 159, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bni33"]
+atlas = ExtResource("1_vmicq")
+region = Rect2(795, 0, 159, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qymrm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hf1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krkee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwmtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lrrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxu5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bni33")
+}],
+"loop": true,
+"name": &"Fountain",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fmdy"]
+size = Vector2(49.2368, 107.457)
+
+[node name="Fountain" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -37)
+sprite_frames = SubResource("SpriteFrames_qymrm")
+animation = &"Fountain"
+autoplay = "Fountain"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.499998, -23.5)
+scale = Vector2(3.26991, 0.418772)
+shape = SubResource("RectangleShape2D_8fmdy")

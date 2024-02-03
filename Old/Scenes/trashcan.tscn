@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://bg3bohsro6lbs"]
 
-[ext_resource type="Script" path="res://Scripts/trashcan.gd" id="1_cjshs"]
+[ext_resource type="Script" path="res://Old/Scripts/trashcan.gd" id="1_cjshs"]
 [ext_resource type="Texture2D" uid="uid://cxfxf8nxad5q" path="res://Assets/objects/trash-can.png" id="1_wrerg"]
-[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Scenes/base_collectable.tscn" id="2_na64x"]
+[ext_resource type="PackedScene" uid="uid://bnal8nekjndlv" path="res://Old/Scenes/base_collectable.tscn" id="2_na64x"]
 [ext_resource type="Texture2D" uid="uid://cnkfag3ty7mit" path="res://Assets/objects/trash-can-spawn-banana-spritesheet.png" id="2_oqqul"]
-[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Scenes/Resources/Banana.tres" id="3_840f7"]
+[ext_resource type="Resource" uid="uid://d1tmido2akgd6" path="res://Old/Scenes/Resources/Banana.tres" id="3_840f7"]
 [ext_resource type="AudioStream" uid="uid://cwneq7rvnmn20" path="res://Assets/Audio/folly work sfx/Banana spawn sfx.wav" id="3_brfy3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t44o"]

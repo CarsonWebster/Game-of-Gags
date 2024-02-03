@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ceclqxxttr2gt" path="res://Assets/player/player-stand-handshake.png" id="6_uhqnp"]
 [ext_resource type="Texture2D" uid="uid://bqu65a8i36pxi" path="res://Assets/player/player-handshake-miss.png" id="7_samt8"]
 [ext_resource type="Texture2D" uid="uid://dp1a3gooh35a" path="res://Assets/player/player-victory-spritesheet.png" id="7_tc38u"]
-[ext_resource type="Script" path="res://Scenes/Entities/Player/state_machine.gd" id="11_i3x5o"]
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="11_xy5dm"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/idle.gd" id="12_4wtjd"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/walk.gd" id="13_qlqbv"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/banana_walk.gd" id="14_gvr6r"]
@@ -305,22 +305,23 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l40b5"]
+radius = 7.05001
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_7mb4g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_pwq4b")
-animation = &"Shock Miss"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, -4)
 scale = Vector2(0.567375, 0.583939)
 shape = SubResource("CircleShape2D_l40b5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
 limit_right = 640
@@ -329,7 +330,7 @@ limit_smoothed = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
-script = ExtResource("11_i3x5o")
+script = ExtResource("11_xy5dm")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -360,7 +361,11 @@ script = ExtResource("19_k3jhv")
 
 [node name="Victory" type="Node" parent="StateMachine"]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/PieThrow" method="_on_animated_sprite_2d_animation_finished"]
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -4)
+radius = 4.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/BananaDrop" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/PieThrow" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Shock" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ShockMiss" method="_on_animated_sprite_2d_animation_finished"]

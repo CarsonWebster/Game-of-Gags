@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://jkybe1d5p2fi"]
+
+[ext_resource type="Texture2D" uid="uid://bve3clj5me6o6" path="res://Assets/skyler/skyler-walk-spritesheet.png" id="1_cbdt4"]
+[ext_resource type="Script" path="res://Scenes/Entities/NPC/npc.gd" id="1_jwxox"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jxld"]
+atlas = ExtResource("1_cbdt4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f437"]
+atlas = ExtResource("1_cbdt4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8yytc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jxld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f437")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkxtd"]
+radius = 5.0
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_jwxox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8yytc")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_fkxtd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(0.360667, 0.0537085, 0.0970256, 1)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, 12)
+radius = 5.0

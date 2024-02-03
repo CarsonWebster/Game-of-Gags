@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://nqpwmhjdjiqt"]
+
+[ext_resource type="Texture2D" uid="uid://cxfxf8nxad5q" path="res://Assets/objects/trash-can.png" id="1_eebne"]
+[ext_resource type="Texture2D" uid="uid://cnkfag3ty7mit" path="res://Assets/objects/trash-can-spawn-banana-spritesheet.png" id="2_ntq42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip2ag"]
+atlas = ExtResource("1_eebne")
+region = Rect2(0, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8oth"]
+atlas = ExtResource("2_ntq42")
+region = Rect2(0, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktnlf"]
+atlas = ExtResource("2_ntq42")
+region = Rect2(17, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvlp0"]
+atlas = ExtResource("2_ntq42")
+region = Rect2(34, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr5r2"]
+atlas = ExtResource("2_ntq42")
+region = Rect2(51, 0, 17, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttq4o"]
+atlas = ExtResource("2_ntq42")
+region = Rect2(68, 0, 17, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umxai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip2ag")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8oth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktnlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvlp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr5r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttq4o")
+}],
+"loop": true,
+"name": &"Throw",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8mpv"]
+radius = 18.3472
+height = 36.6945
+
+[node name="Trashcan" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_umxai")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.490537, 0.472128)
+shape = SubResource("CapsuleShape2D_g8mpv")

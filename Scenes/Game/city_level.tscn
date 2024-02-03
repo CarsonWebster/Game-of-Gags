@@ -1,60 +1,24 @@
 [gd_scene load_steps=11 format=3 uid="uid://dypoammlus3ds"]
 
+[ext_resource type="Script" path="res://Scenes/Game/city_level.gd" id="1_4pfo7"]
 [ext_resource type="Texture2D" uid="uid://dywb4ubvd37xh" path="res://Assets/Enviroment/background-test-1.png" id="1_njqq8"]
-[ext_resource type="Texture2D" uid="uid://d0hgq53k0xpk5" path="res://Assets/objects/fountain-spritesheet.png" id="2_knet6"]
 [ext_resource type="PackedScene" uid="uid://cv8kua02swof6" path="res://Scenes/Entities/Player/player.tscn" id="3_m221j"]
+[ext_resource type="PackedScene" uid="uid://nqpwmhjdjiqt" path="res://Scenes/Enviroment/trashcan.tscn" id="4_oj6og"]
+[ext_resource type="AudioStream" uid="uid://3310wmtmuyao" path="res://Assets/Audio/Music/main theme v3.mp3" id="4_y8256"]
+[ext_resource type="PackedScene" uid="uid://dnl1ur3t8yqat" path="res://Scenes/Enviroment/fountain.tscn" id="5_0lfi0"]
+[ext_resource type="PackedScene" uid="uid://dlj17plvprv5e" path="res://Scenes/UI/pause_menu.tscn" id="5_hw6ja"]
+[ext_resource type="PackedScene" uid="uid://bdic043uvq2g1" path="res://Scenes/Enviroment/bench.tscn" id="7_w7b26"]
+[ext_resource type="PackedScene" uid="uid://jkybe1d5p2fi" path="res://Scenes/Entities/NPC/npc.tscn" id="8_lvj0h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hf1d"]
-atlas = ExtResource("2_knet6")
-region = Rect2(0, 0, 159, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krkee"]
-atlas = ExtResource("2_knet6")
-region = Rect2(159, 0, 159, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwmtq"]
-atlas = ExtResource("2_knet6")
-region = Rect2(318, 0, 159, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lrrn"]
-atlas = ExtResource("2_knet6")
-region = Rect2(477, 0, 159, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qxu5f"]
-atlas = ExtResource("2_knet6")
-region = Rect2(636, 0, 159, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bni33"]
-atlas = ExtResource("2_knet6")
-region = Rect2(795, 0, 159, 72)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qymrm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2hf1d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krkee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwmtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7lrrn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qxu5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bni33")
-}],
-"loop": true,
-"name": &"Fountain",
-"speed": 5.0
-}]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_au8lb"]
+vertices = PackedVector2Array(630, 295, 630, 470, 621, 404, 72, 406, 80, 403, 88, 406, 69, 414, 10, 470, 413, 422, 597, 418, 604, 421, 618, 396, 618, 412, 577, 407, 581, 349, 579, 341, 613, 391, 593, 380, 579, 357, 586, 377, 573, 366, 572, 402, 541, 401, 612, 418, 578, 380, 562, 368, 74, 397, 69, 398, 572, 386, 569, 394, 558, 384, 555, 376, 553, 366, 555, 392, 232, 357, 232, 422, 123, 379, 120, 371, 71, 389, 63, 392, 573, 332, 374, 295, 562, 330, 553, 332, 545, 340, 120, 387, 630, 127, 630, 187, 462, 187, 10, 127, 379, 187, 10, 187, 384, 199, 369, 283, 289, 295, 84, 353, 86, 345, 543, 349, 523, 357, 413, 357, 84, 337, 550, 371, 530, 360, 545, 358, 78, 328, 10, 295, 67, 326, 58, 328, 50, 336, 115, 392, 95, 403, 44, 430, 64, 419, 549, 398, 48, 345, 114, 365, 67, 364, 74, 381, 55, 389, 58, 362, 534, 398, 514, 387, 509, 382, 506, 374, 509, 366, 515, 360, 28, 403, 50, 354, 48, 392, 106, 362, 99, 365, 79, 376, 78, 362, 23, 408, 20, 416, 23, 424, 29, 430, 37, 433)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 1), PackedInt32Array(0, 2, 11), PackedInt32Array(12, 2, 1), PackedInt32Array(13, 9, 8), PackedInt32Array(14, 15, 0, 11, 16), PackedInt32Array(14, 16, 17, 18), PackedInt32Array(18, 17, 19, 20), PackedInt32Array(21, 13, 8, 22), PackedInt32Array(23, 12, 1), PackedInt32Array(20, 19, 24, 25), PackedInt32Array(26, 4, 3, 27), PackedInt32Array(25, 28, 29, 30, 31, 32), PackedInt32Array(33, 30, 29, 21), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(38, 26, 27, 39), PackedInt32Array(0, 15, 40), PackedInt32Array(41, 0, 40, 42), PackedInt32Array(41, 42, 43), PackedInt32Array(41, 43, 44), PackedInt32Array(10, 23, 1), PackedInt32Array(35, 8, 7), PackedInt32Array(45, 36, 35), PackedInt32Array(46, 47, 48, 49), PackedInt32Array(50, 51, 49), PackedInt32Array(50, 49, 48), PackedInt32Array(52, 50, 48), PackedInt32Array(52, 48, 53, 54), PackedInt32Array(55, 56, 41, 44, 57, 58, 59), PackedInt32Array(54, 53, 41, 56, 60), PackedInt32Array(25, 24, 28), PackedInt32Array(32, 31, 61), PackedInt32Array(32, 61, 62, 63), PackedInt32Array(57, 63, 62, 58), PackedInt32Array(54, 60, 64), PackedInt32Array(65, 54, 64, 66), PackedInt32Array(65, 66, 67), PackedInt32Array(65, 67, 68), PackedInt32Array(69, 45, 35), PackedInt32Array(69, 35, 7, 70), PackedInt32Array(5, 70, 7, 71, 72), PackedInt32Array(73, 33, 21), PackedInt32Array(65, 68, 74), PackedInt32Array(34, 37, 75), PackedInt32Array(76, 77, 38, 39, 78, 79), PackedInt32Array(22, 73, 21), PackedInt32Array(80, 22, 8), PackedInt32Array(81, 80, 8), PackedInt32Array(82, 81, 8, 59), PackedInt32Array(83, 82, 59), PackedInt32Array(84, 83, 59), PackedInt32Array(85, 84, 59), PackedInt32Array(86, 65, 74, 87, 88), PackedInt32Array(34, 75, 89, 55), PackedInt32Array(58, 85, 59), PackedInt32Array(55, 59, 34), PackedInt32Array(55, 89, 90), PackedInt32Array(55, 90, 91, 92), PackedInt32Array(76, 92, 91, 77), PackedInt32Array(79, 78, 88, 87), PackedInt32Array(65, 86, 93), PackedInt32Array(65, 93, 94), PackedInt32Array(7, 65, 94), PackedInt32Array(7, 94, 95), PackedInt32Array(7, 95, 96), PackedInt32Array(7, 96, 97), PackedInt32Array(7, 97, 71), PackedInt32Array(5, 72, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 117, 640, 117, 640, 197, 466, 197, 381, 285, 640, 285, 640, 480, 0, 480, 0, 285, 285, 285, 372, 197, 0, 197)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="CityLevel" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_4pfo7")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -62,18 +26,73 @@ texture = ExtResource("1_njqq8")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Enviroment" type="Node2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_au8lb")
+constrain_avoidance = true
+
+[node name="Enviroment" type="Node2D" parent="NavigationRegion2D"]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="Fountain" type="AnimatedSprite2D" parent="Enviroment"]
-y_sort_enabled = true
-position = Vector2(320, 422)
-sprite_frames = SubResource("SpriteFrames_qymrm")
-animation = &"Fountain"
-autoplay = "Fountain"
+[node name="Trashcan" parent="NavigationRegion2D/Enviroment" instance=ExtResource("4_oj6og")]
+position = Vector2(67, 353)
+
+[node name="Trashcan2" parent="NavigationRegion2D/Enviroment" instance=ExtResource("4_oj6og")]
+position = Vector2(562, 357)
+
+[node name="Bench" parent="NavigationRegion2D/Enviroment" instance=ExtResource("7_w7b26")]
+position = Vector2(99, 391)
+metadata/_edit_lock_ = true
+
+[node name="Bench2" parent="NavigationRegion2D/Enviroment" instance=ExtResource("7_w7b26")]
+position = Vector2(48, 418)
+metadata/_edit_lock_ = true
+
+[node name="Bench3" parent="NavigationRegion2D/Enviroment" instance=ExtResource("7_w7b26")]
+position = Vector2(530, 386)
+scale = Vector2(-1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Bench4" parent="NavigationRegion2D/Enviroment" instance=ExtResource("7_w7b26")]
+position = Vector2(593, 406)
+scale = Vector2(-1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Fountain" parent="NavigationRegion2D/Enviroment" instance=ExtResource("5_0lfi0")]
+position = Vector2(322, 413)
+metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" instance=ExtResource("3_m221j")]
-position = Vector2(290, 317)
+position = Vector2(323, 324)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+
+[node name="PauseMenu" parent="Entities/Player" instance=ExtResource("5_hw6ja")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_right = 3.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NPC" parent="Entities" instance=ExtResource("8_lvj0h")]
+position = Vector2(170, 435)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y8256")
+autoplay = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(570, 154)
