@@ -29,6 +29,7 @@ animations = [{
 radius = 5.0
 
 [node name="NPC" type="CharacterBody2D"]
+position = Vector2(0, -12)
 script = ExtResource("1_jwxox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
